@@ -1,0 +1,193 @@
+# Snowflake SQL Development Rules
+
+## Project Structure
+- Use `MAIN_GCE/DATA/` for data files, ETL scripts, and data processing operations
+- Use `MAIN_GCE/SP/` for stored procedures and functions
+- Use `MAIN_GCE/TABLE/` for table definitions, DDL scripts, and schema management
+- Use `MAIN_GCE/TESTING/` for test scripts, validation queries, and quality assurance
+- Use `TESTING/` at root level for integration tests and cross-module testing
+
+## SQL Best Practices
+
+### Naming Conventions
+- Use UPPER_CASE for SQL keywords (SELECT, FROM, WHERE, etc.)
+- Use snake_case for table names, column names, and variables
+- Use descriptive names that clearly indicate purpose
+- Prefix temporary tables with `temp_` or `tmp_`
+- Prefix staging tables with `stg_`
+- Prefix final tables with `fct_` (fact) or `dim_` (dimension)
+
+### Code Formatting
+- Indent consistently (2 or 4 spaces)
+- Align keywords and clauses for readability
+- Use line breaks between major clauses (SELECT, FROM, WHERE, GROUP BY, etc.)
+- Add comments for complex logic or business rules
+- Use block comments for multi-line explanations
+
+### Performance Optimization
+- Always include appropriate WHERE clauses to limit data processing
+- Use LIMIT clauses in development queries
+- Leverage Snowflake's clustering keys for large tables
+- Use appropriate warehouse sizes for the workload
+- Consider using result caching for frequently run queries
+- Use EXPLAIN PLAN to analyze query performance
+
+### Security and Best Practices
+- Use parameterized queries to prevent SQL injection
+- Implement proper access controls and role-based security
+- Use secure string handling for dynamic SQL
+- Follow the principle of least privilege
+- Encrypt sensitive data at rest and in transit
+- Use Snowflake's built-in security features (row-level security, column-level security)
+
+### Error Handling
+- Include proper error handling in stored procedures
+- Use TRY/CATCH blocks where appropriate
+- Log errors with meaningful messages
+- Implement graceful degradation for non-critical failures
+
+## AI Behavior Guidelines
+
+### Code Generation
+- Always include proper error handling in generated code
+- Generate comprehensive comments explaining business logic
+- Include parameter validation where appropriate
+- Suggest performance optimizations when relevant
+- Provide alternative approaches when multiple solutions exist
+
+### Code Review and Feedback
+- Highlight potential performance issues
+- Suggest security improvements
+- Recommend best practices for maintainability
+- Point out opportunities for code reuse
+- Identify potential data quality issues
+
+### Documentation
+- Generate inline documentation for complex queries
+- Create README files for new modules or procedures
+- Document data lineage and dependencies
+- Include usage examples for stored procedures
+
+## Snowflake-Specific Guidelines
+
+### Warehouse Management
+- Use appropriate warehouse sizes for the workload
+- Suspend warehouses when not in use
+- Consider auto-scaling for variable workloads
+- Monitor warehouse usage and costs
+
+### Data Types
+- Use appropriate data types (VARCHAR vs STRING, NUMBER vs DECIMAL)
+- Consider precision and scale for numeric types
+- Use TIMESTAMP_NTZ for timezone-naive timestamps
+- Use TIMESTAMP_TZ for timezone-aware timestamps
+
+### Clustering and Partitioning
+- Implement clustering keys for frequently filtered columns
+- Use date-based clustering for time-series data
+- Monitor clustering effectiveness
+- Re-cluster tables when performance degrades
+
+### Storage and Cost Optimization
+- Use appropriate compression for different data types
+- Implement data lifecycle management
+- Use transient tables for temporary data
+- Consider using external tables for infrequently accessed data
+
+## Development Workflow
+
+### Version Control
+- Use meaningful commit messages
+- Include ticket/issue numbers in commits
+- Review changes before committing
+- Use feature branches for major changes
+
+### Testing
+- Write unit tests for stored procedures
+- Include data validation tests
+- Test with representative data volumes
+- Validate performance with production-like data
+
+### Deployment
+- Use separate environments (dev, test, prod)
+- Implement rollback procedures
+- Document deployment steps
+- Validate changes in lower environments first
+
+## Code Examples
+
+### Stored Procedure Template
+```sql
+CREATE OR REPLACE PROCEDURE schema_name.procedure_name(
+    param1 STRING,
+    param2 NUMBER
+)
+RETURNS STRING
+LANGUAGE SQL
+AS
+$$
+DECLARE
+    -- Variable declarations
+    v_result STRING;
+BEGIN
+    -- Input validation
+    IF param1 IS NULL OR param1 = '' THEN
+        RAISE EXCEPTION 'param1 cannot be null or empty';
+    END IF;
+    
+    -- Main logic
+    -- ... implementation ...
+    
+    -- Return result
+    RETURN v_result;
+EXCEPTION
+    WHEN OTHER THEN
+        -- Error handling
+        RAISE EXCEPTION 'Error in procedure_name: %', SQLERRM;
+END;
+$$;
+```
+
+### Query Template
+```sql
+-- Query description and purpose
+-- Author: [Name]
+-- Date: [Date]
+-- Parameters: [List any parameters]
+
+SELECT 
+    column1,
+    column2,
+    -- Add computed columns with clear aliases
+    CASE 
+        WHEN condition THEN 'value1'
+        ELSE 'value2'
+    END AS computed_column
+FROM table_name
+WHERE condition = 'value'
+    AND another_condition IS NOT NULL
+GROUP BY column1, column2
+HAVING aggregate_condition > 0
+ORDER BY column1 ASC, column2 DESC
+LIMIT 1000; -- Remove in production if not needed
+```
+
+## Quality Assurance
+
+### Code Review Checklist
+- [ ] Proper error handling implemented
+- [ ] Performance considerations addressed
+- [ ] Security best practices followed
+- [ ] Documentation included
+- [ ] Naming conventions followed
+- [ ] Code is readable and maintainable
+- [ ] Tests included where appropriate
+
+### Performance Checklist
+- [ ] Appropriate WHERE clauses used
+- [ ] Efficient JOIN strategies employed
+- [ ] Proper indexing/clustering considered
+- [ ] Query execution plan reviewed
+- [ ] Resource usage optimized
+
+Remember: Always prioritize code clarity, maintainability, and performance. When in doubt, favor explicit over implicit, and always consider the long-term maintenance of the code. 

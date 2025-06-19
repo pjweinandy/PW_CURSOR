@@ -1,0 +1,153 @@
+CREATE OR REPLACE PROCEDURE CLIENT_STAGE_T.LOAD_RAW_INTO_HIST("V_BASE_NAME" STRING, "V_CALC_DT" DATE)
+RETURNS VARCHAR
+LANGUAGE SQL
+EXECUTE AS CALLER
+AS 'DECLARE
+
+    BASE_NAME STRING;
+    HIST_TABLE_NAME STRING;
+    RAW_TABLE_NAME STRING;
+    HIST_TABLE_EXISTS BOOLEAN;
+    V_ENABLE_IND STRING;
+    SQL_COMMAND STRING;
+    V_RAW_COLS STRING;
+    
+    V_SCHEMA_NAME := ''CLIENT_STAGE_T'';
+    V_HIST_TABLE_NAME_FULL STRING;
+    V_RAW_TABLE_NAME_FULL STRING;
+    V_DELTA_SQL STRING;
+    V_PRV_CALC_DT DATE := :V_CALC_DT-1;
+    V_DDL_CHECK BOOLEAN := TRUE;
+    V_TEMP_LOG_TABLE_NAME STRING;
+    V_ERR_CHECK NUMBER;
+    V_CALC_DT_YYYYMMDD STRING := TO_CHAR(:V_CALC_DT,''YYYYMMDD'');
+
+    BREAKING_DDL_CHANGE EXCEPTION (-20002, ''RAW DATATYPE NOT COMPATIBLE WITH HIST TARGET.'');
+
+BEGIN
+    LET res RESULTSET DEFAULT (SELECT BASE_NAME,RAW_TABLE,HIST_TABLE,ENABLE_IND FROM CONFIG_ALL.STAGE_FILE_TABLE_MAPPING_PW WHERE CALC_DT = :V_CALC_DT AND BASE_NAME = :V_BASE_NAME);
+
+    LET TABLE_CURSOR CURSOR FOR res;
+
+    OPEN TABLE_CURSOR;
+
+    FOR res IN TABLE_CURSOR DO
+
+        BASE_NAME := res.BASE_NAME;
+        
+        V_ENABLE_IND := res.ENABLE_IND;
+
+        RAW_TABLE_NAME := res.RAW_TABLE;
+        V_RAW_TABLE_NAME_FULL := :V_SCHEMA_NAME||''.''||:RAW_TABLE_NAME;
+        
+        HIST_TABLE_NAME := res.HIST_TABLE;
+        V_HIST_TABLE_NAME_FULL := :V_SCHEMA_NAME||''.''||:HIST_TABLE_NAME;
+
+        --PULL IN DELTA SQL WHERE IT IS NEEDED--
+        SELECT TEMPLATE_DELTA_SQL INTO V_DELTA_SQL
+        FROM CONFIG_ALL.STAGE_FILE_LOAD_TYPE
+        WHERE BASE_NAME = :BASE_NAME
+        AND DELTA_IND=TRUE;
+
+        SELECT COUNT(*) > 0 INTO HIST_TABLE_EXISTS
+        FROM INFORMATION_SCHEMA.TABLES
+        WHERE TABLE_SCHEMA = :V_SCHEMA_NAME
+        AND TABLE_NAME = :HIST_TABLE_NAME;
+
+       -- IF (HIST_TABLE_EXISTS AND :V_ENABLE_IND=''Y'')
+        IF (HIST_TABLE_EXISTS )
+        THEN
+            -------------------
+            IF (V_DDL_CHECK = TRUE) --BEGIN DDL CHECK
+            THEN 
+            
+                --CALL CLIENT_STAGE_T.APPLY_SCHEMA_CHANGES_FROM_RAW_TO_HIST(:V_SCHEMA_NAME, :RAW_TABLE_NAME, :HIST_TABLE_NAME, FALSE);    
+                CALL CLIENT_STAGE_T.SOURCE_TARGET_DDL_ADJUST(:V_SCHEMA_NAME,:RAW_TABLE_NAME,:V_SCHEMA_NAME,:HIST_TABLE_NAME, TRUE);
+    
+                --GET LOG INFO FROM THE RUN--
+                V_TEMP_LOG_TABLE_NAME := :V_SCHEMA_NAME||''.TEMP_''||:HIST_TABLE_NAME||''_''||:V_CALC_DT_YYYYMMDD;
+                CREATE OR REPLACE TEMPORARY TABLE IDENTIFIER(:V_TEMP_LOG_TABLE_NAME)
+                AS
+                 WITH latest_runs AS (
+                    SELECT target_table, MAX(log_id) as max_log_id
+                    FROM CLIENT_STAGE_T.ALTER_STATEMENTS_LOG
+                    WHERE STATUS=''STARTED'' 
+                    AND TARGET_TABLE=:HIST_TABLE_NAME
+                    GROUP BY ALL 
+                )
+                SELECT l.*
+                FROM CLIENT_STAGE_T.ALTER_STATEMENTS_LOG l
+                INNER JOIN latest_runs lr 
+                    ON l.target_table = lr.target_table 
+                    AND l.log_id >= lr.max_log_id;
+    
+                SELECT COUNT(*) INTO V_ERR_CHECK FROM IDENTIFIER(:V_TEMP_LOG_TABLE_NAME) WHERE STATUS=''ERROR'';
+    
+                IF (:V_ERR_CHECK > 0)
+                THEN 
+                    RAISE BREAKING_DDL_CHANGE;
+                END IF;
+                
+            END IF; --END DDL CHECK
+            -----------------------
+            DELETE FROM IDENTIFIER(:V_HIST_TABLE_NAME_FULL) WHERE CALC_DT = :V_CALC_DT;
+
+            -- Get RAW table column list to specify HIST insert columns
+            SELECT LISTAGG(COLUMN_NAME, '', '') WITHIN GROUP (ORDER BY ORDINAL_POSITION) INTO :V_RAW_COLS
+            FROM INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_SCHEMA = :V_SCHEMA_NAME
+            AND TABLE_NAME = :RAW_TABLE_NAME;
+            
+
+            SQL_COMMAND := ''
+                INSERT INTO '' || V_HIST_TABLE_NAME_FULL || ''(CALC_DT, '' || :V_RAW_COLS || '')
+                SELECT DATE'''''' || V_CALC_DT || '''''', * FROM '' || V_RAW_TABLE_NAME_FULL || ''
+            '';
+            EXECUTE IMMEDIATE :SQL_COMMAND;
+
+            IF (:V_DELTA_SQL IS NOT NULL)
+            THEN
+                EXECUTE IMMEDIATE :V_DELTA_SQL USING (V_CALC_DT,V_CALC_DT,V_PRV_CALC_DT);
+            END IF;
+
+            UPDATE CONFIG_ALL.STAGE_FILE_TABLE_MAPPING_PW
+            SET HIST_LOADED=TRUE
+            ,LAST_UPDATE_DTTM=CURRENT_TIMESTAMP()
+            WHERE BASE_NAME = :BASE_NAME
+            AND CALC_DT = :V_CALC_DT; 
+
+        --TABLE DOES NOT EXIST
+        --ELSEIF (NOT(:HIST_TABLE_EXISTS) AND :V_ENABLE_IND=''Y'')
+        ELSEIF (NOT(:HIST_TABLE_EXISTS) )
+        THEN 
+            
+            SQL_COMMAND := ''CREATE TABLE '' || V_HIST_TABLE_NAME_FULL || '' AS SELECT DATE'''''' || V_CALC_DT || '''''' AS CALC_DT, * FROM '' || V_RAW_TABLE_NAME_FULL || '''';
+            EXECUTE IMMEDIATE :SQL_COMMAND;
+
+            --CALL CLIENT_STAGE_T.APPLY_SCHEMA_CHANGES_FROM_RAW_TO_HIST(:V_SCHEMA_NAME, :RAW_TABLE_NAME, :HIST_TABLE_NAME, TRUE);
+
+            SQL_COMMAND := ''
+                INSERT INTO '' || V_HIST_TABLE_NAME_FULL || ''(CALC_DT, '' || :V_RAW_COLS || '')
+                SELECT DATE'''''' || V_CALC_DT || '''''', * FROM '' || V_RAW_TABLE_NAME_FULL || ''
+            '';
+            EXECUTE IMMEDIATE :SQL_COMMAND;
+
+            UPDATE CONFIG_ALL.STAGE_FILE_TABLE_MAPPING_PW
+            SET HIST_LOADED=TRUE
+            ,LAST_UPDATE_DTTM=CURRENT_TIMESTAMP()
+            WHERE BASE_NAME = :BASE_NAME
+            AND CALC_DT = :V_CALC_DT; 
+        
+        --ELSE 
+            --DO NOTHING''
+        
+        END IF;
+
+        
+    END FOR;
+
+    CLOSE TABLE_CURSOR;
+
+    RETURN ''SUCCESS'';
+END;
+';
