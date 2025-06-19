@@ -1,0 +1,4210 @@
+PARENT,CONFIG_NAME,LOAD_TYPE,LOAD_LEVEL,LEVEL_VALUE,STEP,CONFIG_JSON,LAST_UPDATE_TIMESTAMP,LAST_UPDATE_BY
+TEST,SUM_SV_AMT,INSERT_DELETE,,,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""source"": ""ce.AGG_CE"",
+      ""target"": ""AGG_CE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""source"": ""hist.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""source"": ""hist.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""source"": ""hist.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""source"": ""hist.SV_SECURITIZATION_VALUE"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""hist.SV_SECURITIZATION_VALUE * 1000000000""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""source"": ""hist.INELIGIBLE_IND"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(17)"",
+      ""source"": ""hist.VIN"",
+      ""target"": ""VIN"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""source"": ""hist.MAKE"",
+      ""target"": ""MAKE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""LEFT(hist.MAKE, 2) || RIGHT(hist.MAKE, 2)""
+    },
+    {
+      ""data_type"": ""VARCHAR(40)"",
+      ""source"": ""hist.OBLIGOR_ID"",
+      ""target"": ""OBLIGOR_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""hist.OBLIGOR_ID || '_TEST'""
+    },
+    {
+      ""data_type"": ""VARCHAR(250)"",
+      ""source"": ""hist.OBLIGOR_NAME"",
+      ""target"": ""OBLIGOR_NAME"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    }
+  ],
+  ""filter_clause"": ""hist.CALC_DT = '{{ filter_date }}'"",
+  ""group_by"": ""ALL"",
+  ""joins"": null,
+  ""source_alias"": ""hist"",
+  ""source_table"": ""CLIENT_STAGE_T.CLIENT_INPUTS_HIST"",
+  ""target_table"": ""FLL_CORE_A.SV_LEDGER_DYNAMIC""
+}",2025-06-06 13:51:35.332,MICHAEL.TRIPP@HRSFT.COM
+TEST,SUM_SV_BY_CALC_DT,INSERT_DELETE,,,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""hist.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 2,
+      ""source"": ""hist.SV_SECURITIZATION_VALUE"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SUM(hist.SV_SECURITIZATION_VALUE)""
+    },
+    {
+      ""data_type"": ""VARCHAR(17)"",
+      ""ordinal_position"": 0,
+      ""source"": ""hist.VIN"",
+      ""target"": ""VIN"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 0,
+      ""source"": ""hist.MAKE"",
+      ""target"": ""MAKE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""LEFT(hist.MAKE, 2) || RIGHT(hist.MAKE, 2)""
+    },
+    {
+      ""data_type"": ""VARCHAR(40)"",
+      ""ordinal_position"": 0,
+      ""source"": ""hist.OBLIGOR_ID"",
+      ""target"": ""OBLIGOR_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""hist.OBLIGOR_ID || '_TEST'""
+    },
+    {
+      ""data_type"": ""VARCHAR(250)"",
+      ""ordinal_position"": 0,
+      ""source"": ""hist.OBLIGOR_NAME"",
+      ""target"": ""OBLIGOR_NAME"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    }
+  ],
+  ""filter_clause"": ""hist.CALC_DT = '{{ filter_date }}'"",
+  ""group_by"": ""ALL"",
+  ""joins"": null,
+  ""source_alias"": ""hist"",
+  ""source_table"": ""CLIENT_STAGE_T.CLIENT_INPUTS_HIST"",
+  ""target_table"": ""FLL_CORE_A.SV_LEDGER_DYNAMIC""
+}",2025-06-09 11:09:42.202,MICHAEL.TRIPP@HRSFT.COM
+LOAN_TAPE,HIST_TO_SV_LEDGER,INSERT_DELETE,,,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 5,
+      ""source"": ""ce.AGG_CE"",
+      ""target"": ""AGG_CE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 2,
+      ""source"": ""hist.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""hist.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 3,
+      ""source"": ""hist.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 4,
+      ""source"": ""hist.SV_SECURITIZATION_VALUE"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""hist.SV_SECURITIZATION_VALUE * 1000000000""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 5,
+      ""source"": ""hist.INELIGIBLE_IND"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(17)"",
+      ""ordinal_position"": null,
+      ""source"": ""hist.VIN"",
+      ""target"": ""VIN"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": null,
+      ""source"": ""hist.MAKE"",
+      ""target"": ""MAKE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""LEFT(hist.MAKE, 2) || RIGHT(hist.MAKE, 2)""
+    },
+    {
+      ""data_type"": ""VARCHAR(40)"",
+      ""ordinal_position"": null,
+      ""source"": ""hist.OBLIGOR_ID"",
+      ""target"": ""OBLIGOR_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": ""hist.OBLIGOR_ID || '_TEST'""
+    },
+    {
+      ""data_type"": ""VARCHAR(250)"",
+      ""ordinal_position"": null,
+      ""source"": ""hist.OBLIGOR_NAME"",
+      ""target"": ""OBLIGOR_NAME"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    }
+  ],
+  ""filter_clause"": ""hist.CALC_DT = '{{ filter_date }}'"",
+  ""group_by"": ""ALL"",
+  ""joins"": [
+    {
+      ""alias"": ""ce"",
+      ""on"": ""ce.OBLIGOR_ID = hist.OBLIGOR_ID AND ce.CALC_DT = hist.CALC_DT"",
+      ""table"": ""(SELECT CALC_DT, OBLIGOR_ID, SUM(ENHANCEMENT_AMT) AS AGG_CE FROM FLL_CORE_T.OBLIGOR_ENHANCEMENT GROUP BY ALL)"",
+      ""type"": ""LEFT""
+    }
+  ],
+  ""source_alias"": ""hist"",
+  ""source_table"": ""CLIENT_STAGE_T.CLIENT_INPUTS_HIST"",
+  ""target_table"": ""FLL_CORE_A.SV_LEDGER_DYNAMIC""
+}",2025-06-09 12:24:34.513,MICHAEL.TRIPP@HRSFT.COM
+HIST_TO_ASSET_WT,LP_HIST_TO_ASSET_WT,INSERT_DELETE,,,1,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSET_NUMBER, LP_OBLIGOR.OBLIGOR_ID, A.CLIENT_NUMBER"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSET_NUMBER) || '-' || COALESCE(UPPER(LP_OBLIGOR.OBLIGOR_ID),UPPER(A.CLIENT_NUMBER) || '-LP')""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""F.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 4,
+      ""source"": ""A.SOLD_DATE"",
+      ""target"": ""SOLD_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.SOLD_DATE = DATE'1900-01-01' THEN NULL ELSE A.SOLD_DATE END""
+    },
+    {
+      ""data_type"": ""VARCHAR(3)"",
+      ""ordinal_position"": 5,
+      ""source"": ""A.TITLE_RECEIVED_DATE, A.DELIVERY_IN_PROCESS_INDICATOR, A.DELIVERY_IN_PROCESS_DAY_COUNT, A.TAG_STATE, A.UPFIT_COST, LIEN.LIEN_HOLIDAY_DAYS, UPFIT.UPFIT_THRESHOLD_AMT, CONFIG_LKP.LKP_DIP_STATE_CONTROL.TAG_STATE, CONFIG_LKP.LKP_DIP_STATE_CONTROL.ON_IND, CONFIG_LKP.LKP_DIP_STATE_CONTROL.START_DT, CONFIG_LKP.LKP_DIP_STATE_CONTROL.END_DT, '{{ V_CALC_DT }}'"",
+      ""target"": ""IN_PROCESS_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.TITLE_RECEIVED_DATE IS NOT NULL AND A.TITLE_RECEIVED_DATE <> DATE'1900-01-01' THEN 'NO' WHEN A.DELIVERY_IN_PROCESS_INDICATOR = 1 AND A.DELIVERY_IN_PROCESS_DAY_COUNT <= LIEN.LIEN_HOLIDAY_DAYS THEN 'NO' WHEN A.TAG_STATE NOT IN (SELECT TAG_STATE FROM CONFIG_LKP.LKP_DIP_STATE_CONTROL WHERE ON_IND = 1 AND '{{ V_CALC_DT }}' >= START_DT AND '{{ V_CALC_DT }}' <= END_DT) AND A.UPFIT_COST <= UPFIT.UPFIT_THRESHOLD_AMT THEN 'NO' WHEN (A.TAG_STATE IN (SELECT TAG_STATE FROM CONFIG_LKP.LKP_DIP_STATE_CONTROL WHERE ON_IND = 1 AND '{{ V_CALC_DT }}' >= START_DT AND '{{ V_CALC_DT }}' <= END_DT) OR A.UPFIT_COST > UPFIT.UPFIT_THRESHOLD_AMT) AND A.DELIVERY_IN_PROCESS_DAY_COUNT > LIEN.LIEN_HOLIDAY_DAYS AND A.DELIVERY_IN_PROCESS_INDICATOR = 1 THEN 'YES' ELSE 'NO' END""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 6,
+      ""source"": ""A.VEHICLE_PAID_DATE"",
+      ""target"": ""PAYMENT_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.VEHICLE_PAID_DATE = DATE'1900-01-01' THEN NULL ELSE A.VEHICLE_PAID_DATE END""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INCEPTION_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 8,
+      ""source"": ""A.NET_SALE_AMOUNT"",
+      ""target"": ""DISPOSITION_PROCEEDS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 9,
+      ""source"": ""L.LEASE_TYPE_DETAIL, L.LEASE_TYPE, A.ASSET_TYPE, LT.LEASE_TYPE_OUTPUT"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN (UPPER(L.LEASE_TYPE_DETAIL) IS NULL OR UPPER(L.LEASE_TYPE_DETAIL) = 'NULL') AND UPPER(L.LEASE_TYPE) = 'FLEET MANAGEMENT ONLY' AND UPPER(A.ASSET_TYPE) IN ('LEASE - FINANCE','CAPITAL LEASE') THEN 'OPEN END' WHEN UPPER(L.LEASE_TYPE_DETAIL) IS NULL AND UPPER(L.LEASE_TYPE) = 'FLEET MANAGEMENT ONLY' AND UPPER(A.ASSET_TYPE) IN ('LEASE - OPERATING') THEN 'CLOSED END' ELSE UPPER(LT.LEASE_TYPE_OUTPUT) END""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""L.REMAINING_BOOK_VALUE"",
+      ""target"": ""LL_NBV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": ""L.CAP_COST_TOTAL"",
+      ""target"": ""LL_CAP_COST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": ""L.RESIDUAL_VALUE"",
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 13,
+      ""source"": ""L.MONTHS_BILLED"",
+      ""target"": ""CURRENT_TERM_MONTHS_BILLED"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": ""A.UPFIT_COST"",
+      ""target"": ""UPFIT_COST"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""A.VENDOR_INVOICE_AMOUNT"",
+      ""target"": ""PURCHASE_PRICE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""L.SELL_FEE"",
+      ""target"": ""SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": null,
+      ""target"": ""ACCT_CAP_COST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 18,
+      ""source"": ""L.TERMINATION_DATE"",
+      ""target"": ""TERMINATION_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 19,
+      ""source"": ""A.ASSET_NUMBER"",
+      ""target"": ""UNIT_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""SERIAL"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""COUNTRY_CD"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'US'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 22,
+      ""source"": """",
+      ""target"": ""ASSET_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.VEHICLE_TYPE IN ('TRAILER','EQUIPMENT') THEN CAST('EQUIPMENT' AS VARCHAR(50)) WHEN A.VEHICLE_TRIM IN ('TRAILER','EQUIPMENT') THEN CAST('EQUIPMENT' AS VARCHAR(50)) WHEN A.VEHICLE_TYPE IS NULL AND (A.GVWR IS NULL OR A.GVWR = 0) AND A.VEHICLE_TRIM IS NULL AND A.MARKET_CLASS IS NULL THEN CAST('EQUIPMENT' AS VARCHAR(50)) WHEN A.GVWR BETWEEN 1 AND 16000 AND COALESCE(A.VEHICLE_TYPE,'') <> ('EQUIPMENT') THEN CAST('CAR' AS VARCHAR(50)) WHEN (A.GVWR IS NULL OR A.GVWR = 0) AND A.VEHICLE_TYPE IN ('CARS','SUVS','CARGO VANS','CROSSOVERS','LIGHT DUTY TRUCKS','MINIVANS') THEN CAST('CAR' AS VARCHAR(50)) WHEN A.GVWR BETWEEN 16001 AND 33000 AND COALESCE(A.VEHICLE_TYPE,'') <> ('EQUIPMENT') THEN CAST('MEDIUM DUTY' AS VARCHAR(50)) WHEN (A.GVWR IS NULL OR A.GVWR = 0) AND UPPER(A.VEHICLE_TRIM) IN ('MEDIUM DUTY') THEN CAST('MEDIUM DUTY' AS VARCHAR(50)) WHEN A.GVWR > 33000 AND COALESCE(A.VEHICLE_TYPE,'') <> ('EQUIPMENT') THEN CAST('HEAVY DUTY' AS VARCHAR(50)) WHEN (A.GVWR IS NULL OR A.GVWR = 0) AND UPPER(A.VEHICLE_TRIM) IN ('CAB & CHASSIS','HEAVY DUTY','TRACTOR') THEN CAST('HEAVY DUTY' AS VARCHAR(50)) WHEN UPPER(A.VEHICLE_TRIM) IN ('TRACTOR') THEN CAST('HEAVY DUTY' AS VARCHAR(50)) WHEN (A.GVWR IS NULL OR A.GVWR = 0) AND M.MARKET_CLASS IS NOT NULL THEN CAST(M.MC_VEHICLE_TYPE AS VARCHAR(50)) ELSE 'EQUIPMENT' END""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""IN_SERVICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 24,
+      ""source"": ""L.REMAINING_MONTHS"",
+      ""target"": ""CURRENT_REMAINING_MONTHS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 25,
+      ""source"": ""L.PAYMENT_FREQUENCY"",
+      ""target"": ""PAYMENT_FREQUENCY"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(L.PAYMENT_FREQUENCY)""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 26,
+      ""source"": ""L.ORIGINAL_LEASE_TERM"",
+      ""target"": ""CURRENT_TERM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 27,
+      ""source"": ""L.UNAFFIRMED_LEASE_IND"",
+      ""target"": ""UNAFFIRMED_LEASE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 28,
+      ""source"": ""A.SYNDICATION_STATUS"",
+      ""target"": ""SYNDICATION_STATUS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 29,
+      ""source"": ""C.PARENT_CLIENT_ID"",
+      ""target"": ""OBLIGOR_PARENT_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(10)"",
+      ""ordinal_position"": 30,
+      ""source"": ""C.SIC_CODE"",
+      ""target"": ""SIC_CODE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 31,
+      ""source"": null,
+      ""target"": ""SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'LP'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND SOURCE_SYSTEM = 'LP'"",
+  ""joins"": [
+    {
+      ""alias"": ""C"",
+      ""on"": ""A.CALC_DT = C.CALC_DT AND A.CLIENT_NUMBER = C.CLIENT_ID"",
+      ""table"": ""CLIENT_STAGE_T.LP_CLIENT"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""F"",
+      ""on"": ""A.LENDER_CODE = F.FLEETCO_ID_INPUT AND A.CALC_DT >= F.START_DT AND A.CALC_DT <= F.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_ETL_STAGE_FLEETCO_ID"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""LP_OBLIGOR"",
+      ""on"": ""A.CALC_DT = LP_OBLIGOR.CALC_DT AND LP_OBLIGOR.CALC_DT = C.CALC_DT AND LP_OBLIGOR.CLIENT_ID = C.CLIENT_ID"",
+      ""table"": ""CLIENT_STAGE_T.LP_CLIENT_OBLIGOR"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""R"",
+      ""on"": ""A.CALC_DT = R.CALC_DT AND A.ASSET_NUMBER = R.ASSET_NUMBER AND A.CLIENT_NUMBER = R.CLIENT_NUMBER"",
+      ""table"": ""CLIENT_STAGE_T.LP_ASSETINVOICEOPENAR"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""GR"",
+      ""on"": ""R.CALC_DT = GR.CALC_DT AND R.ASSET_NUMBER = GR.ASSET_NUMBER AND R.INVOICE_NUMBER = GR.INVOICE_NBR AND ((RIGHT(GR.RECEIVABLE_ID, 1) = '0' AND R.ASSET_SUFFIX IS NULL) OR (RIGHT(GR.RECEIVABLE_ID, 1) = R.ASSET_SUFFIX)) AND GR.RECV_SOURCE_SYSTEM = 'LP'"",
+      ""table"": ""CLIENT_STAGE_T.GCE_RECEIVABLE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""L"",
+      ""on"": ""L.CALC_DT = C.CALC_DT AND L.CLIENT_NUMBER = C.CLIENT_ID AND L.ASSET_NUMBER = A.ASSET_NUMBER"",
+      ""table"": ""CLIENT_STAGE_T.LP_LEASE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""LIEN"",
+      ""join"": ""LEFT"",
+      ""on"": ""'{{ V_CALC_DT }}' >= LIEN.START_DT AND '{{ V_CALC_DT }}' <= LIEN.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_LIEN_HOLIDAY_CONTROL""
+    },
+    {
+      ""alias"": ""UPFIT"",
+      ""join"": ""LEFT"",
+      ""on"": ""'{{ V_CALC_DT }}' >= UPFIT.START_DT AND '{{ V_CALC_DT }}' <= UPFIT.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_UPFIT_THRESHOLD_CONFIG""
+    },
+    {
+      ""alias"": ""LT"",
+      ""join"": ""LEFT"",
+      ""on"": ""L.LEASE_TYPE_DETAIL = LT.LEASE_TYPE_INPUT AND A.CALC_DT >= LT.START_DT AND A.CALC_DT <= LT.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_LEASE_TYPE""
+    },
+    {
+      ""alias"": ""M"",
+      ""join"": ""LEFT"",
+      ""on"": ""A.MARKET_CLASS = M.MARKET_CLASS AND A.CALC_DT BETWEEN M.START_DATE AND M.END_DATE"",
+      ""table"": ""CLIENT_STAGE_T.MARKET_CLASS_CONTROL""
+    }
+  ],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.LP_ASSET"",
+  ""target_table"": ""CLIENT_STAGE_T.ASSET_WT_V2""
+}",2025-06-13 15:26:12.128,MICHAEL.TRIPP@HRSFT.COM
+HIST_TO_ASSET_WT,WHEELS_HIST_TO_ASSET_WT,INSERT_DELETE,,,2,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 3,
+      ""source"": ""F.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 4,
+      ""source"": ""V.SOLD_DT"",
+      ""target"": ""SOLD_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.DISPOSAL_BOOK_VALUE_AMT > 0 AND V.SOLD_DT IS NULL THEN DATE'1900-01-01' ELSE V.SOLD_DT END""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 5,
+      ""source"": ""A.DIP_FLAG"",
+      ""target"": ""IN_PROCESS_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.DIP_FLAG = 0 THEN 'NO' ELSE 'YES' END""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 6,
+      ""source"": ""A.PURCHASE_DATE"",
+      ""target"": ""PAYMENT_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": ""V.IN_SERVICE_DATE"",
+      ""target"": ""INCEPTION_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 8,
+      ""source"": ""A.DISPOSAL_BOOK_VALUE_AMT"",
+      ""target"": ""DISPOSITION_PROCEEDS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN A.DISPOSAL_BOOK_VALUE_AMT > 0 AND V.SOLD_DT IS NULL AND A.SALE_AMT = 0 THEN A.DISPOSAL_BOOK_VALUE_AMT WHEN A.DISPOSAL_BOOK_VALUE_AMT > 0 AND V.SOLD_DT IS NOT NULL AND A.SALE_AMT = 0 THEN A.DISPOSAL_BOOK_VALUE_AMT ELSE A.SALE_AMT END""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 9,
+      ""source"": ""LT.LEASE_TYPE_OUTPUT"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""A.BOOK_VALUE_AMT"",
+      ""target"": ""LL_NBV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": ""A.STIP_COST_AMT"",
+      ""target"": ""LL_CAP_COST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 13,
+      ""source"": ""V.MONTHS_IN_SERVICE_NUM"",
+      ""target"": ""CURRENT_TERM_MONTHS_BILLED"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""UPFIT_COST"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""PURCHASE_PRICE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""A.SALE_FEE"",
+      ""target"": ""SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER"",
+      ""ordinal_position"": 17,
+      ""source"": ""NULL"",
+      ""target"": ""ACCT_CAP_COST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 18,
+      ""source"": ""V.TERM_DT"",
+      ""target"": ""TERMINATION_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 19,
+      ""source"": ""A.ASSET_ID"",
+      ""target"": ""UNIT_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""SERIAL"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""COUNTRY_CD"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'US'""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 22,
+      ""source"": ""LKP_ASSET_TYPE.ASSET_TYPE_OUTPUT"",
+      ""target"": ""ASSET_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(LKP_ASSET_TYPE.ASSET_TYPE_OUTPUT, 'EQUIPMENT')""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 23,
+      ""source"": ""V.IN_SERVICE_DATE"",
+      ""target"": ""IN_SERVICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 24,
+      ""source"": ""V.ORIGINAL_TERM_NUM, V.MONTHS_IN_SERVICE_NUM"",
+      ""target"": ""CURRENT_REMAINING_MONTHS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(V.ORIGINAL_TERM_NUM,0) - COALESCE(V.MONTHS_IN_SERVICE_NUM,0)""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""PAYMENT_FREQUENCY"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'MONTHLY'""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 26,
+      ""source"": ""V.ORIGINAL_TERM_NUM, V.RESERVE_RATE"",
+      ""target"": ""CURRENT_TERM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN COALESCE(V.ORIGINAL_TERM_NUM, 0) = 0 THEN DIV0NULL(1, COALESCE(V.RESERVE_RATE, 0)*100) ELSE V.ORIGINAL_TERM_NUM END""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""UNAFFIRMED_LEASE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 28,
+      ""source"": null,
+      ""target"": ""SYNDICATION_STATUS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 29,
+      ""source"": null,
+      ""target"": ""OBLIGOR_PARENT_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 30,
+      ""source"": ""C.SIC6_CODE"",
+      ""target"": ""SIC_CODE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 31,
+      ""source"": null,
+      ""target"": ""SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND SOURCE_SYSTEM = 'WHEELS'"",
+  ""joins"": [
+    {
+      ""alias"": ""V"",
+      ""on"": ""A.CALC_DT = V.CALC_DT AND A.ASSET_ID = V.ASSET_ID"",
+      ""table"": ""CLIENT_STAGE_T.WHEELS_VEHICLE_DATA"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""C"",
+      ""on"": ""A.CALC_DT = C.CALC_DT AND A.FLEET_ID = C.FLEET_ID"",
+      ""table"": ""CLIENT_STAGE_T.WHEELS_CLIENT_DATA"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""F"",
+      ""on"": ""A.ASSET_SALE_ID = F.FLEETCO_ID_INPUT AND A.CALC_DT >= F.START_DT AND A.CALC_DT <= F.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_ETL_STAGE_FLEETCO_ID"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""GR"",
+      ""on"": ""A.CALC_DT = GR.CALC_DT AND A.ASSET_ID = GR.ASSET_NUMBER AND GR.RECV_SOURCE_SYSTEM = 'WHEELS'"",
+      ""table"": ""CLIENT_STAGE_T.GCE_RECEIVABLE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""LT"",
+      ""on"": ""UPPER(V.LEASE_TYPE) = LT.LEASE_TYPE_INPUT AND A.CALC_DT >= LT.START_DT AND A.CALC_DT < LT.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_LEASE_TYPE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""LKP_ASSET_TYPE"",
+      ""on"": ""V.VEHICLE_TYPE_DESCRIPTION = LKP_ASSET_TYPE.ASSET_TYPE_INPUT"",
+      ""table"": ""CONFIG_LKP.LKP_ASSET_TYPE"",
+      ""type"": ""LEFT""
+    }
+  ],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES"",
+  ""target_table"": ""CLIENT_STAGE_T.ASSET_WT_V2""
+}",2025-06-13 15:28:56.948,MICHAEL.TRIPP@HRSFT.COM
+PW_TEST,CE_SV_LEDGER_CONFIG_DIRECT_INPUTS_WT,INSERT_DELETE,FLEETCO_ID,"""4""",1,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""wav.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""TRY_TO_DATE(wav.CALC_DT)""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 2,
+      ""source"": ""wav.ASSET_ID"",
+      ""target"": ""UNIT_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(TRIM(wav.ASSET_ID))""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 3,
+      ""source"": ""wav.ASSET_ID, wav.FLEET_ID"",
+      ""target"": ""LL_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CONCAT(UPPER(wav.ASSET_ID), '-', UPPER(wav.FLEET_ID), '-W')""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 4,
+      ""source"": ""wav.ASSET_ID"",
+      ""target"": ""ASSET_ID_C"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(wav.ASSET_ID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 5,
+      ""source"": ""wav.FLEET_ID"",
+      ""target"": ""OBLIGOR_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(wav.FLEET_ID) || '-' || 'W'""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 6,
+      ""source"": ""V.VIN"",
+      ""target"": ""VIN"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(V.VIN)""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 7,
+      ""source"": ""wav.ASSET_STATUS"",
+      ""target"": ""ASSET_STATUS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(wav.ASSET_STATUS, 'ACTIVE')""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 8,
+      ""source"": ""wav.ASSET_SALE_ID"",
+      ""target"": ""ASSET_SALE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CAST(wav.ASSET_SALE_ID AS NUMBER(38,0))""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 10,
+      ""source"": ""c.OBLIGOR_NAME"",
+      ""target"": ""OBLIGOR_NAME"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(c.FLEET_NAME)""
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 11,
+      ""source"": ""f.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CAST(f.FLEETCO_ID AS NUMBER(38,0))""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": ""wav.SV"",
+      ""target"": ""WHEELS_PROVIDED_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ROUND(wav.SV, 2)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""OPEN_DISPOSAL_RESERVE_ALL"",
+      ""target"": ""TRAC_GAIN"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""least(OPEN_DISPOSAL_RESERVE_ALL,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 14,
+      ""source"": ""null"",
+      ""target"": ""DEPRECIATED_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN SUBTRACT_FUTURERE_SERVE_FLAG = '0'  THEN BOOK_VALUE_AMT - DISPOSAL_BOOK_VALUE_AMT ELSE BOOK_VALUE_AMT - CP_FUTURE_RENTAL_COLLECTIONS_RESERVE - DISPOSAL_BOOK_VALUE_AMT END""
+    },
+    {
+      ""data_type"": ""VARCHAR(11)"",
+      ""ordinal_position"": 15,
+      ""source"": ""null"",
+      ""target"": ""DEPRECIATED_VALUE_NOTE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN SUBTRACT_FUTURERE_SERVE_FLAG = '0' THEN 'DEP VALUE 1' ELSE 'DEP VALUE 2' END""
+    },
+    {
+      ""data_type"": ""NUMBER(22,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""null"",
+      ""target"": ""UNPAID_LEASE_RECV_PART_1"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0,GREATEST(OPEN_RENTAL_RESERVE_ALL,0) +GREATEST(OPEN_DISPOSAL_RESERVE_ALL,0) +CASE WHEN SALE_FEE>0 AND OPEN_DISPOSAL_RESERVE_ALL=0 AND OPEN_DISPOSAL_SALE_FEE_ALL=0 AND(WAV.ASSET_STATUS = 'DISPINVOICECURRENTMONTH' OR WAV.ASSET_STATUS = 'DISPINVOICEPRIORMONTH') THEN 0 ELSE SALE_FEE END -GREATEST(0,GRAND_TOTAL_PAST_DUE_61_270_DAYS)-GRAND_TOTAL_PAST_DUE_270_PLUS_DAYS)""
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""wav.DAILY_SV_COLLECTIONS_PART_1"",
+      ""target"": ""DAILY_SV_COLLECTIONS_PART_1"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0,TRUE_DAILY_RENTAL_COLLECTIONS_RESERVE)+GREATEST(0,TRUE_DAILY_DISPOSAL_COLLECTIONS_RESERVE)+TRUE_DAILY_DISPOSAL_COLLECTIONS_SALE_FEE""
+    },
+    {
+      ""data_type"": ""NUMBER(24,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""null"",
+      ""target"": ""CALC_SV_PART_1"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""TRAC_GAIN + DEPRECIATED_VALUE +UNPAID_LEASE_RECV_PART_1 + DAILY_SV_COLLECTIONS_PART_1""
+    },
+    {
+      ""data_type"": ""VARCHAR(11)"",
+      ""ordinal_position"": 19,
+      ""source"": ""null"",
+      ""target"": ""UNPAID_LEASE_RECV_FINAL_FLAG"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN CALC_SV_PART_1 = WHEELS_PROVIDED_SV THEN 'NO SALE FEE' ELSE  'SALE FEE' END""
+    },
+    {
+      ""data_type"": ""NUMBER(24,2)"",
+      ""ordinal_position"": 20,
+      ""source"": ""null"",
+      ""target"": ""CALCULATED_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN CALC_SV_PART_1 = SALE_FEE  THEN 0 ELSE  CALC_SV_PART_1 END""
+    },
+    {
+      ""data_type"": ""NUMBER(22,2)"",
+      ""ordinal_position"": 21,
+      ""source"": ""null"",
+      ""target"": ""UNPAID_LEASE_RECV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN UNPAID_LEASE_RECV_PART_1 = SALE_FEE AND CALC_SV_PART_1 = SALE_FEE THEN 0 ELSE UNPAID_LEASE_RECV_PART_1 END""
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 22,
+      ""source"": ""null"",
+      ""target"": ""DAILY_SV_COLLECTIONS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN DAILY_SV_COLLECTIONS_PART_1 = SALE_FEE AND CALC_SV_PART_1 = SALE_FEE THEN 0 ELSE DAILY_SV_COLLECTIONS_PART_1 END""
+    },
+    {
+      ""data_type"": ""NUMBER(25,2)"",
+      ""ordinal_position"": 23,
+      ""source"": ""null"",
+      ""target"": ""DIFF"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CALCULATED_SV - WHEELS_PROVIDED_SV""
+    },
+    {
+      ""data_type"": ""VARCHAR(23)"",
+      ""ordinal_position"": 24,
+      ""source"": ""null"",
+      ""target"": ""WHEELS_DATA_LABEL"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS PROVIDED DATA-->'""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 25,
+      ""source"": ""CHARGE_OFF_FLAG"",
+      ""target"": ""CHARGE_OFF_FLAG"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 26,
+      ""source"": ""BANKRUPTCY_FLAG"",
+      ""target"": ""BANKRUPTCY_FLAG"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 27,
+      ""source"": ""null"",
+      ""target"": ""SOLD_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN WAV.DISPOSAL_BOOK_VALUE_AMT > 0 AND V.SOLD_DT IS NULL AND F.FLEETCO_ID<>9 /*PJW20250425*/ THEN DATE'1900-01-01' ELSE V.SOLD_DT END""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 28,
+      ""source"": ""null"",
+      ""target"": ""LL_NBV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""WAV.BOOK_VALUE_AMT""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 29,
+      ""source"": ""null"",
+      ""target"": ""RESIDUAL_VALUE_BASE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""null""
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 30,
+      ""source"": ""null"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(L.LEASE_TYPE_OUTPUT,'OPEN END')""
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 31,
+      ""source"": ""null"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN VEH_INELIG.ASSET_ID IS NOT NULL THEN 1 ELSE 0 END""
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 32,
+      ""source"": ""null"",
+      ""target"": ""INELIGIBLE_DESC"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""VEH_INELIG.INELIGIBLE_DESC""
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 33,
+      ""source"": ""wav.LL_ACTIVE_IND"",
+      ""target"": ""LL_ACTIVE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN CHARGE_OFF_FLAG = 0 AND BANKRUPTCY_FLAG = 0 THEN 1 ELSE 0 END""
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 34,
+      ""source"": ""null"",
+      ""target"": ""LL_TYPE_COMPUTED"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(LL_TYPE,'OPEN END')""
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 35,
+      ""source"": ""null"",
+      ""target"": ""ASSET_VALUE_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DEPRECIATED_VALUE_NOTE""
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 36,
+      ""source"": ""null"",
+      ""target"": ""ASSET_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(DEPRECIATED_VALUE,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 37,
+      ""source"": ""null"",
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(CASE WHEN COALESCE(SOLD_DT,'2099-12-31') <= WAV.CALC_DT THEN 0 WHEN LL_TYPE_COMPUTED = 'OPEN END' THEN 0 ELSE LEAST(LL_NBV,COALESCE(RESIDUAL_VALUE_BASE,0)) END,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 38,
+      ""source"": ""null"",
+      ""target"": ""SALE_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""WAV.SALE_FEE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 39,
+      ""source"": ""null"",
+      ""target"": ""INCLUDED_SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN UNPAID_LEASE_RECV_FINAL_FLAG =  'SALE FEE' THEN COALESCE(WAV.SALE_FEE,0) ELSE 0 END""
+    },
+    {
+      ""data_type"": ""VARCHAR(18)"",
+      ""ordinal_position"": 40,
+      ""source"": ""null"",
+      ""target"": ""RECV_VALUE_CALC"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS RECV & TRAC'""
+    },
+    {
+      ""data_type"": ""NUMBER(22,2)"",
+      ""ordinal_position"": 41,
+      ""source"": ""null"",
+      ""target"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(UNPAID_LEASE_RECV,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 42,
+      ""source"": ""null"",
+      ""target"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(NULL,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 43,
+      ""source"": ""null"",
+      ""target"": ""TRAC_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(TRAC_GAIN,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 44,
+      ""source"": ""null"",
+      ""target"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(NULL,0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 45,
+      ""source"": ""null"",
+      ""target"": ""DEPOSIT_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DAILY_SV_COLLECTIONS""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 46,
+      ""source"": ""null"",
+      ""target"": ""RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""TRAC_RECV_VALUE + PRINCIPAL_RENT_RECV_VALUE""
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 47,
+      ""source"": ""null"",
+      ""target"": ""SECURITIZATION_VALUE_CALC"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_VALUE_SOURCE || COALESCE(' + ' || RECV_VALUE_CALC,'')""
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 48,
+      ""source"": ""null"",
+      ""target"": ""OBLIGOR_ENHANCEMENT_VALUE_CALC"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRORATED ASSET PERCENTAGE'""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 49,
+      ""source"": ""null"",
+      ""target"": ""AGG_CE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CE.AGG_CE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 50,
+      ""source"": ""null"",
+      ""target"": ""SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""INCLUDED_SELLING_FEE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 51,
+      ""source"": ""null"",
+      ""target"": ""PRINCIPAL_RENT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_VALUE - RESIDUAL_VALUE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 52,
+      ""source"": ""null"",
+      ""target"": ""SECURITIZATION_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_VALUE + RECV_VALUE + DEPOSIT_VALUE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 53,
+      ""source"": ""null"",
+      ""target"": ""AGG_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SUM(ASSET_VALUE + RECV_VALUE + DEPOSIT_VALUE) OVER (PARTITION BY WAV.CALC_DT, WAV.ASSET_ID)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 54,
+      ""source"": ""null"",
+      ""target"": ""OBLIGOR_ENHANCEMENT_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ROUND(COALESCE((SECURITIZATION_VALUE/NULLIF(AGG_SV,0)),0)*COALESCE(AGG_CE,0),2)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 55,
+      ""source"": ""null"",
+      ""target"": ""OE_REDUCED_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SECURITIZATION_VALUE - OBLIGOR_ENHANCEMENT_VALUE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 56,
+      ""source"": ""null"",
+      ""target"": ""RESIDUAL_VALUE_REDUCED_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SECURITIZATION_VALUE - RESIDUAL_VALUE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 57,
+      ""source"": ""null"",
+      ""target"": ""ADJUSTED_SV"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SECURITIZATION_VALUE - OBLIGOR_ENHANCEMENT_VALUE - RESIDUAL_VALUE""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' "",
+  ""joins"": [
+    {
+      ""alias"": ""V"",
+      ""on"": ""WAV.CALC_DT = V.CALC_DT AND WAV.ASSET_ID = V.ASSET_ID"",
+      ""table"": ""CLIENT_STAGE_T.WHEELS_VEHICLE_DATA"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""C"",
+      ""on"": ""WAV.CALC_DT = C.CALC_DT AND WAV.FLEET_ID::VARCHAR = C.FLEET_ID::VARCHAR"",
+      ""table"": ""CLIENT_STAGE_T.WHEELS_CLIENT_DATA"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""L"",
+      ""on"": ""UPPER(V.LEASE_TYPE) = L.LEASE_TYPE_INPUT AND WAV.CALC_DT >= L.START_DT AND WAV.CALC_DT < L.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_LEASE_TYPE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""F"",
+      ""on"": ""WAV.ASSET_SALE_ID::VARCHAR = F.FLEETCO_ID_INPUT AND WAV.CALC_DT >= F.START_DT AND WAV.CALC_DT < F.END_DT"",
+      ""table"": ""CONFIG_LKP.LKP_ETL_STAGE_FLEETCO_ID"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""VEH_INELIG"",
+      ""on"": ""WAV.ASSET_ID = VEH_INELIG.ASSET_ID AND WAV.CALC_DT = VEH_INELIG.CALC_DT"",
+      ""table"": ""(SELECT CALC_DT,ASSET_ID,LISTAGG(DISTINCT INELIGIBLE_DESC,',') AS INELIGIBLE_DESC FROM FLL_CORE_T.INELIGIBLE WHERE   CALC_DT=DATE'2025-04-09' GROUP BY ALL)"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""CE"",
+      ""on"": ""UPPER(C.FLEET_ID)|| '-W' = CE.OBLIGOR_ID"",
+      ""table"": ""(SELECT CALC_DT,OBLIGOR_ID::VARCHAR AS OBLIGOR_ID, SUM(ENHANCEMENT_AMT) AS AGG_CE FROM FLL_CORE_T.OBLIGOR_ENHANCEMENT WHERE CALC_DT = DATE'2025-04-09' GROUP BY ALL)"",
+      ""type"": ""LEFT""
+    }
+  ],
+  ""load_filter"": ""WAV.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""WAV"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES"",
+  ""target_table"": ""FLL_CORE_A.CE_SV_LEDGER_CONFIG_DIRECT_INPUTS_WT""
+}",2025-06-16 13:53:27.006,PATRICK.WEINANDY@HRSFT.COM
+PW_TEST,CE_SV_LEDGER_CONFIG_DIRECT_INPUTS_FINAL,INSERT_DELETE,FLEETCO_ID,"""4""",1,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 2,
+      ""source"": ""ASSET_ID_C"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 3,
+      ""source"": ""ASSET_ID_C"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 4,
+      ""source"": ""LL_ID"",
+      ""target"": ""LL_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 5,
+      ""source"": ""OBLIGOR_ID"",
+      ""target"": ""OBLIGOR_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 6,
+      ""source"": ""VIN"",
+      ""target"": ""VIN"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 7,
+      ""source"": ""ASSET_STATUS"",
+      ""target"": ""ASSET_STATUS"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 8,
+      ""source"": ""ASSET_SALE_ID"",
+      ""target"": ""ASSET_SALE_ID"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 9,
+      ""source"": ""OBLIGOR_NAME"",
+      ""target"": ""OBLIGOR_NAME"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 10,
+      ""source"": ""FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": ""WHEELS_PROVIDED_SV"",
+      ""target"": ""WHEELS_PROVIDED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": ""TRAC_GAIN"",
+      ""target"": ""TRAC_GAIN"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""DEPRECIATED_VALUE"",
+      ""target"": ""DEPRECIATED_VALUE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(11)"",
+      ""ordinal_position"": 14,
+      ""source"": ""DEPRECIATED_VALUE_NOTE"",
+      ""target"": ""DEPRECIATED_VALUE_NOTE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(24,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""CALCULATED_SV"",
+      ""target"": ""CALCULATED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(22,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""UNPAID_LEASE_RECV"",
+      ""target"": ""UNPAID_LEASE_RECV"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""DAILY_SV_COLLECTIONS"",
+      ""target"": ""DAILY_SV_COLLECTIONS"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(25,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""DIFF"",
+      ""target"": ""DIFF"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 19,
+      ""source"": ""CHARGE_OFF_FLAG"",
+      ""target"": ""CHARGE_OFF_FLAG"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 20,
+      ""source"": ""BANKRUPTCY_FLAG"",
+      ""target"": ""BANKRUPTCY_FLAG"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 21,
+      ""source"": ""SOLD_DT"",
+      ""target"": ""SOLD_DT"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": ""LL_NBV"",
+      ""target"": ""LL_NBV"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 23,
+      ""source"": ""RESIDUAL_VALUE_BASE"",
+      ""target"": ""RESIDUAL_VALUE_BASE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 24,
+      ""source"": ""INELIGIBLE_IND"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 25,
+      ""source"": ""INELIGIBLE_DESC"",
+      ""target"": ""INELIGIBLE_DESC"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 26,
+      ""source"": ""LL_ACTIVE_IND"",
+      ""target"": ""LL_ACTIVE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 27,
+      ""source"": ""LL_TYPE_COMPUTED"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 28,
+      ""source"": ""ASSET_VALUE_SOURCE"",
+      ""target"": ""ASSET_VALUE_SOURCE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(20,2)"",
+      ""ordinal_position"": 29,
+      ""source"": ""ASSET_VALUE"",
+      ""target"": ""ASSET_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 30,
+      ""source"": ""RESIDUAL_VALUE"",
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 31,
+      ""source"": ""SALE_FEE"",
+      ""target"": ""SALE_FEE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 32,
+      ""source"": ""INCLUDED_SELLING_FEE"",
+      ""target"": ""INCLUDED_SELLING_FEE"",
+      ""target_type"": ""ASSET_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(18)"",
+      ""ordinal_position"": 33,
+      ""source"": ""RECV_VALUE_CALC"",
+      ""target"": ""RECV_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(22,2)"",
+      ""ordinal_position"": 34,
+      ""source"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 35,
+      ""source"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 36,
+      ""source"": ""TRAC_RECV_VALUE"",
+      ""target"": ""TRAC_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 37,
+      ""source"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 38,
+      ""source"": ""DEPOSIT_VALUE"",
+      ""target"": ""DEPOSIT_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 39,
+      ""source"": ""RECV_VALUE"",
+      ""target"": ""RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 40,
+      ""source"": ""SECURITIZATION_VALUE_CALC"",
+      ""target"": ""SECURITIZATION_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 41,
+      ""source"": ""OBLIGOR_ENHANCEMENT_VALUE_CALC"",
+      ""target"": ""OBLIGOR_ENHANCEMENT_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 42,
+      ""source"": ""SELLING_FEE"",
+      ""target"": ""SELLING_FEE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 43,
+      ""source"": ""PRINCIPAL_RENT"",
+      ""target"": ""PRINCIPAL_RENT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 44,
+      ""source"": ""SECURITIZATION_VALUE"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 45,
+      ""source"": ""SECURITIZATION_VALUE"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 47,
+      ""source"": ""OBLIGOR_ENHANCEMENT_VALUE_CALC"",
+      ""target"": ""OE_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 48,
+      ""source"": ""OBLIGOR_ENHANCEMENT_VALUE"",
+      ""target"": ""OE_ASSET_AMT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 49,
+      ""source"": ""OE_REDUCED_SV"",
+      ""target"": ""OE_REDUCED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 50,
+      ""source"": ""RESIDUAL_VALUE_REDUCED_SV"",
+      ""target"": ""RESIDUAL_VALUE_REDUCED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 51,
+      ""source"": ""ADJUSTED_SV"",
+      ""target"": ""ADJUSTED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 52,
+      ""source"": ""SV_CALC_FORMULA"",
+      ""target"": ""SV_CALC_FORMULA"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": ""'ASSET_VALUE + RECV_VALUE + DEPOSIT_VALUE'""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 53,
+      ""source"": ""SV_CALC_DETAILS"",
+      ""target"": ""SV_CALC_DETAILS"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": ""COALESCE(ASSET_VALUE,'NULL')||' + '||COALESCE(RECV_VALUE,'NULL')||' + '||COALESCE(DEPOSIT_VALUE,'NULL')""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' "",
+  ""load_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""S"",
+  ""source_table"": ""FLL_CORE_A.CE_SV_LEDGER_CONFIG_DIRECT_INPUTS_WT"",
+  ""target_table"": ""FLL_CORE_A.CE_SV_LEDGER_CONFIG_DIRECT_INPUTS""
+}",2025-06-16 14:35:21.948,PATRICK.WEINANDY@HRSFT.COM
+GCE_RECEIVABLE,RECV_DELETE,DELETE,,,1,"{
+  ""columns"": [],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:18:13.443,MICHAEL.TRIPP@HRSFT.COM
+CE_RECEIVABLE,LP_RECV_TRAC_AR_INSERT,INSERT,,,2,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""R.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""R.ASSETNUMBER"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(R.ASSETNUMBER)""
+    },
+    {
+      ""data_type"": ""VARCHAR(150)"",
+      ""ordinal_position"": 3,
+      ""source"": ""R.INVOICENUMBER, R.ASSETSUFFIX"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT)) || '-' || COALESCE(NULLIF(TRIM(UPPER(R.ASSETSUFFIX)), ''), '0')""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": ""R.INVOICENUMBER"",
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT))""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'TRAC_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(NULL)""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": ""R.INVOICEDATE"",
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""R.INVOICEDUEDATE"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": ""R.INVOICEDUEDATE, R.CALC_DT"",
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0,DATEDIFF(DAY,R.INVOICEDUEDATE,R.CALC_DT))""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""R.ASSETTRACTOTAL"",
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""R.ASSETTRACTOTAL"",
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""R.ASSETTRACTOTAL"",
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""R.ASSETTRACTOTAL, R.ASSETINVOICEOPENTRACAR"",
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETTRACTOTAL - R.ASSETINVOICEOPENTRACAR""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""R.ASSETINVOICEOPENTRACAR"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""R.ASSETINVOICEOPENTRACAR"",
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'LP'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""joins"": [],
+  ""load_filter"": ""R.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""R"",
+  ""source_table"": ""CLIENT_STAGE_T.LP_ASSETINVOICEOPENAR_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:21:10.949,MICHAEL.TRIPP@HRSFT.COM
+CE_RECEIVABLE,LP_RECV_PRINCIPAL_AR_INSERT,INSERT,,,3,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""R.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""R.ASSETNUMBER"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(R.ASSETNUMBER)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""R.INVOICENUMBER, R.ASSETSUFFIX"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT)) || '-' || COALESCE(NULLIF(TRIM(UPPER(R.ASSETSUFFIX)), ''), '0')""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": ""R.INVOICENUMBER"",
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT))""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRINCIPAL_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(NULL)""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": ""R.INVOICEDATE"",
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""R.INVOICEDUEDATE"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": ""R.INVOICEDUEDATE, R.CALC_DT"",
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0, DATEDIFF(DAY, R.INVOICEDUEDATE, R.CALC_DT))""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""R.ASSETPRINCIPALRENTTOTAL"",
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""R.ASSETPRINCIPALRENTTOTAL"",
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""R.ASSETPRINCIPALRENTTOTAL"",
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""R.ASSETPRINCIPALRENTTOTAL, R.ASSETINVOICEOPENPRINCIPALRENTAR"",
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETPRINCIPALRENTTOTAL - R.ASSETINVOICEOPENPRINCIPALRENTAR""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""R.ASSETINVOICEOPENPRINCIPALRENTAR"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""R.ASSETINVOICEOPENPRINCIPALRENTAR"",
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'LP'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND ORIG_PRINCIPAL_AMT <> 0"",
+  ""joins"": [],
+  ""load_filter"": ""R.CALC_DT = '{{ V_CALC_DT }}' AND R.ASSETPRINCIPALRENTTOTAL <> 0"",
+  ""source_alias"": ""R"",
+  ""source_table"": ""CLIENT_STAGE_T.LP_ASSETINVOICEOPENAR_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:23:14.985,MICHAEL.TRIPP@HRSFT.COM
+CE_RECEIVABLE,LP_RECV_OTHER_INSERT,INSERT,,,4,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""R.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""R.ASSETNUMBER"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(R.ASSETNUMBER)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""R.ASSETNUMBER, R.INVOICENUMBER, R.ASSETSUFFIX"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT)) || '-' || COALESCE(NULLIF(TRIM(UPPER(R.ASSETSUFFIX)), ''), '0')""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": ""R.INVOICENUMBER"",
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(CAST(R.INVOICENUMBER AS INT))""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'OTHER'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(NULL)""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": ""R.INVOICEDATE"",
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""R.INVOICEDUEDATE"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": ""R.INVOICEDUEDATE, R.CALC_DT"",
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0, DATEDIFF(DAY, R.INVOICEDUEDATE, R.CALC_DT))""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""R.ASSETFLEETMANAGEMENTTOTAL, R.ASSETSERVICERREIMBURSEMENTTOTAL, R.ASSETNONPRINCIPALRENTTOTAL"",
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETFLEETMANAGEMENTTOTAL + R.ASSETSERVICERREIMBURSEMENTTOTAL + R.ASSETNONPRINCIPALRENTTOTAL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""R.ASSETFLEETMANAGEMENTTOTAL, R.ASSETSERVICERREIMBURSEMENTTOTAL, R.ASSETNONPRINCIPALRENTTOTAL"",
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETFLEETMANAGEMENTTOTAL + R.ASSETSERVICERREIMBURSEMENTTOTAL + R.ASSETNONPRINCIPALRENTTOTAL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""R.ASSETFLEETMANAGEMENTTOTAL, R.ASSETSERVICERREIMBURSEMENTTOTAL, R.ASSETNONPRINCIPALRENTTOTAL"",
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETFLEETMANAGEMENTTOTAL + R.ASSETSERVICERREIMBURSEMENTTOTAL + R.ASSETNONPRINCIPALRENTTOTAL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""R.ASSETFLEETMANAGEMENTTOTAL, R.ASSETSERVICERREIMBURSEMENTTOTAL, R.ASSETNONPRINCIPALRENTTOTAL, R.ASSETINVOICEOPENFLEETMANAGEMENTAR, R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR, R.ASSETINVOICEOPENNONPRINCIPALRENTAR"",
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""(R.ASSETFLEETMANAGEMENTTOTAL + R.ASSETSERVICERREIMBURSEMENTTOTAL + R.ASSETNONPRINCIPALRENTTOTAL) - (R.ASSETINVOICEOPENFLEETMANAGEMENTAR + R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR + R.ASSETINVOICEOPENNONPRINCIPALRENTAR)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""R.ASSETINVOICEOPENFLEETMANAGEMENTAR, R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR, R.ASSETINVOICEOPENNONPRINCIPALRENTAR"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETINVOICEOPENFLEETMANAGEMENTAR + R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR + R.ASSETINVOICEOPENNONPRINCIPALRENTAR""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""R.ASSETINVOICEOPENFLEETMANAGEMENTAR, R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR, R.ASSETINVOICEOPENNONPRINCIPALRENTAR"",
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""R.ASSETINVOICEOPENFLEETMANAGEMENTAR + R.ASSETINVOICEOPENSERVICERREIMBURSEMENTAR + R.ASSETINVOICEOPENNONPRINCIPALRENTAR""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'LP'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND ORIG_PRINCIPAL_AMT <> 0"",
+  ""joins"": [],
+  ""load_filter"": ""R.CALC_DT = '{{ V_CALC_DT }}' AND (ASSETFLEETMANAGEMENTTOTAL + ASSETSERVICERREIMBURSEMENTTOTAL + ASSETNONPRINCIPALRENTTOTAL) <> 0"",
+  ""source_alias"": ""R"",
+  ""source_table"": ""CLIENT_STAGE_T.LP_ASSETINVOICEOPENAR_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:25:21.220,MICHAEL.TRIPP@HRSFT.COM
+GCE_RECEIVABLE,WHEELS_RECV_PRINCIPAL_AR_NON_PAST_DUE_INSERT,INSERT,,,5,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSETID"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSETID, A.FLEETID"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID) || '-' || COALESCE(UPPER(A.FLEETID),'0') || '-' || '1'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": null,
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRINCIPAL_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": null,
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DATE'2099-12-31'""
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": null,
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": null,
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": null,
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": null,
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""A.OPEN_RENTAL_RESERVE_ALL, A.OPEN_RENTAL_MGMT_FEES_ALL, A.OPEN_RENTAL_INTEREST_ALL, A.OPEN_RENTAL_FUNDING_MARKUP_ALL, A.GRAND_TOTAL_PAST_DUE_ALL"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""A.OPEN_RENTAL_RESERVE_ALL + A.OPEN_RENTAL_MGMT_FEES_ALL + A.OPEN_RENTAL_INTEREST_ALL + A.OPEN_RENTAL_FUNDING_MARKUP_ALL - A.GRAND_TOTAL_PAST_DUE_ALL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""A.OPEN_RENTAL_RESERVE_ALL, A.GRAND_TOTAL_PAST_DUE_61_270_DAYS, A.GRAND_TOTAL_PAST_DUE_270_PLUS_DAYS"",
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""GREATEST(0, A.OPEN_RENTAL_RESERVE_ALL - A.GRAND_TOTAL_PAST_DUE_61_270_DAYS - A.GRAND_TOTAL_PAST_DUE_270_PLUS_DAYS)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": ""A.OPEN_RENTAL_MGMT_FEES_ALL"",
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""A.OPEN_RENTAL_MGMT_FEES_ALL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": ""A.OPEN_RENTAL_INTEREST_ALL"",
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""A.OPEN_RENTAL_INTEREST_ALL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""joins"": [],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:28:54.101,MICHAEL.TRIPP@HRSFT.COM
+GCE_RECEIVABLE,WHEELS_RECV_PRINCIPAL_AR_PAST_DUE_0_60_INSERT,INSERT,,,6,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSETID"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSETID, A.FLEETID"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID) || '-' || COALESCE(UPPER(A.FLEETID),'0') || '-' || '1'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": null,
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRINCIPAL_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DATEADD('DAY', -60, A.CALC_DT)""
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": null,
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""60""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": null,
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": null,
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": null,
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""A.GRAND_TOTAL_PAST_DUE_0_60_DAYS"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""A.GRAND_TOTAL_PAST_DUE_0_60_DAYS""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": null,
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND RECV_BALANCE_AMT IS NOT NULL"",
+  ""joins"": [],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}' AND A.GRAND_TOTAL_PAST_DUE_0_60_DAYS IS NOT NULL"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:30:25.505,MICHAEL.TRIPP@HRSFT.COM
+GCE_RECEIVABLE,WHEELS_RECV_PRINCIPAL_AR_PAST_DUE_61_270_INSERT,INSERT,,,7,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSETID"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSETID, A.FLEETID"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID) || '-' || COALESCE(UPPER(A.FLEETID), '0') || '-' || '1'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": null,
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRINCIPAL_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DATEADD('DAY', -270, A.CALC_DT)""
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": null,
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""270""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": null,
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": null,
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": null,
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""A.GRAND_TOTAL_PAST_DUE_61_270_DAYS"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": null,
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND RECV_BALANCE_AMT IS NOT NULL"",
+  ""joins"": [],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}' AND A.GRAND_TOTAL_PAST_DUE_61_270_DAYS IS NOT NULL"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:31:42.487,MICHAEL.TRIPP@HRSFT.COM
+GCE_RECEIVABLE,WHEELS_RECV_PRINCIPAL_AR_PAST_DUE_270_PLUS_INSERT,INSERT,,,8,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSETID"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSET_ID, A.FLEETID"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID) || '-' || COALESCE(UPPER(A.FLEETID), '0') || '-' || '1'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": null,
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'PRINCIPAL_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DATEADD('DAY', -271, A.CALC_DT)""
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": null,
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""271""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": null,
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": null,
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": null,
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""A.GRAND_TOTAL_PAST_DUE_270_PLUS_DAYS"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": null,
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}' AND RECV_BALANCE_AMT IS NOT NULL"",
+  ""joins"": [],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}' AND A.GRAND_TOTAL_PAST_DUE_270_PLUS_DAYS IS NOT NULL"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:32:57.448,MICHAEL.TRIPP@HRSFT.COM
+GCE_RECEIVABLE,WHEELS_RECV_TRAC_AR_INSERT,INSERT,,,9,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.ASSETID"",
+      ""target"": ""ASSET_NUMBER"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID)""
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSETID, A.FLEETID"",
+      ""target"": ""RECEIVABLE_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""UPPER(A.ASSETID) || '-' || COALESCE(UPPER(A.FLEETID),'0') || '-' || '1'""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 4,
+      ""source"": null,
+      ""target"": ""INVOICE_NBR"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 5,
+      ""source"": null,
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'TRAC_AR'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": null,
+      ""target"": ""RECV_SUB_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 7,
+      ""source"": null,
+      ""target"": ""INVOICE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 8,
+      ""source"": null,
+      ""target"": ""INVOICE_DUE_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""DATE'2099-12-31'""
+    },
+    {
+      ""data_type"": ""INTEGER"",
+      ""ordinal_position"": 9,
+      ""source"": null,
+      ""target"": ""DAY_COUNT_PAST_DUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": null,
+      ""target"": ""ORIG_PRINCIPAL_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": null,
+      ""target"": ""ORIG_ADMIN_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""ORIG_INTEREST_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": null,
+      ""target"": ""ORIG_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": null,
+      ""target"": ""ORIG_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": null,
+      ""target"": ""NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": null,
+      ""target"": ""PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""A.OPEN_DISPOSAL_RESERVE_ALL"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""A.OPEN_DISPOSAL_RESERVE_ALL"",
+      ""target"": ""PRINCIPAL_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": null,
+      ""target"": ""ADMIN_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": null,
+      ""target"": ""INTEREST_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": null,
+      ""target"": ""ORIG_TAX_ADJUSTMENTS"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": null,
+      ""target"": ""TAX_NET_RECV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": null,
+      ""target"": ""TAX_PAID_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": null,
+      ""target"": ""TAX_RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""NULL""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 26,
+      ""source"": null,
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'BULK'""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 27,
+      ""source"": null,
+      ""target"": ""RECV_SOURCE_SYSTEM"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'WHEELS'""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""joins"": [],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.WHEELS_ASSET_VALUES_TEST_HIST"",
+  ""target_table"": ""GCE_RECEIVABLE_V2""
+}",2025-06-17 11:34:19.806,MICHAEL.TRIPP@HRSFT.COM
+CE_SV_LEDGER,CE_SV_LEDGER_CONFIG_C,INSERT_DELETE,FLEETCO_ID,1,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 2,
+      ""source"": ""FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 3,
+      ""source"": ""ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""BOOLEAN"",
+      ""ordinal_position"": 4,
+      ""source"": ""LL_ACTIVE_IND"",
+      ""target"": ""ACTIVE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""BOOLEAN"",
+      ""ordinal_position"": 5,
+      ""source"": ""INELIGIBLE_IND"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 6,
+      ""source"": ""SV_AMT"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 7,
+      ""source"": ""ASSET_JSON"",
+      ""target"": ""ASSET_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 8,
+      ""source"": ""RECV_JSON"",
+      ""target"": ""RECV_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 9,
+      ""source"": ""INDICATOR_JSON"",
+      ""target"": ""INDICATOR_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 10,
+      ""source"": ""INELIGIBLE_JSON"",
+      ""target"": ""INELIGIBLE_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 7,
+      ""source"": ""LL_TYPE"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 8,
+      ""source"": ""ASSET_VALUE_SOURCE"",
+      ""target"": ""ASSET_VALUE_SOURCE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 9,
+      ""source"": ""RESIDUAL_VALUE"",
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 10,
+      ""source"": ""PRINCIPAL_RENT"",
+      ""target"": ""PRINCIPAL_RENT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": ""ASSET_VALUE_FINAL"",
+      ""target"": ""ASSET_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": ""RECV_VALUE_CALC"",
+      ""target"": ""RECV_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 13,
+      ""source"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": ""TRAC_RECV_VALUE"",
+      ""target"": ""TRAC_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""RECV_VALUE"",
+      ""target"": ""RECV_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""DEPOSIT_VALUE"",
+      ""target"": ""DEPOSIT_VALUE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 19,
+      ""source"": ""SV_CALC"",
+      ""target"": ""SV_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 20,
+      ""source"": ""SV_AMT"",
+      ""target"": ""SV_AMT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 21,
+      ""source"": ""OE_VALUE_CALC"",
+      ""target"": ""OE_VALUE_CALC"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 22,
+      ""source"": ""OE_ASSET_AMT"",
+      ""target"": ""OE_ASSET_AMT"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 23,
+      ""source"": ""OE_REDUCED_SV"",
+      ""target"": ""OE_REDUCED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 24,
+      ""source"": ""RESIDUAL_VALUE_REDUCED_SV"",
+      ""target"": ""RESIDUAL_VALUE_REDUCED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 25,
+      ""source"": ""ADJUSTED_SV"",
+      ""target"": ""ADJUSTED_SV"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 26,
+      ""source"": ""RECORD_SOURCE"",
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR"",
+      ""ordinal_position"": 27,
+      ""source"": ""RECORD_NOTE"",
+      ""target"": ""RECORD_NOTE"",
+      ""target_type"": ""SV_JSON"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(100)"",
+      ""ordinal_position"": 12,
+      ""source"": null,
+      ""target"": ""SOURCE_SP_NAME"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'{{ PROCEDURE_NAME }}'""
+    }
+  ],
+  ""delete_filter"": null,
+  ""joins"": [],
+  ""load_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""src"",
+  ""source_table"": ""(--REDUCED AND ADJUSTED SV--\nSELECT \nSUBQ.*\n                                                    \n-- STEP 1\n\n,GREATEST(ASSET_VALUE + INCLUDED_SELLING_FEE,0) AS ASSET_VALUE_FINAL\n    \n,INCLUDED_SELLING_FEE AS SELLING_FEE\n,CASE \nWHEN ASSET_VALUE - RESIDUAL_VALUE < 0 \n    THEN 0 \n    ELSE ASSET_VALUE - RESIDUAL_VALUE \nEND AS PRINCIPAL_RENT_STEP_1\t\n,\nPRINCIPAL_RENT_RECV_VALUE \n+ TRAC_RECV_VALUE \n+ ASSUMED_PRINCIPAL_RENT_RECV_VALUE \n+ ASSUMED_TRAC_RECV_VALUE \n    AS RECV_VALUE\n    \n,ASSET_VALUE_SOURCE || COALESCE(' + ' || RECV_VALUE_CALC,'')  AS SECURITIZATION_VALUE_CALC\n\n-- STEP 2\n,'PRORATED ASSET PERCENTAGE' AS OBLIGOR_ENHANCEMENT_VALUE_CALC\n,CE.AGG_CE\n\n-- STEP 3\n,ASSET_VALUE - RESIDUAL_VALUE AS PRINCIPAL_RENT\t\n,ASSET_VALUE + RECV_VALUE + DEPOSIT_VALUE AS SECURITIZATION_VALUE\n,SUM(ASSET_VALUE + RECV_VALUE + DEPOSIT_VALUE) OVER (PARTITION BY CALC_DT, ASSET_ID) AS AGG_SV\n\n-- STEP 4\n,ROUND(\tCOALESCE( ( SECURITIZATION_VALUE / NULLIF(AGG_SV,0) ) , 0 ) -- PRORATED PERCENTAGE\n                *\n    COALESCE(AGG_CE,0) -- AGGREGATE AMOUNT\n                , 2)  -- ROUNDED TO TWO DECIMALS (MAY CAUSE NOT MATERIAL PENNY ROUNDING ISSUES) CAN BE SOLVED WITH SOME EXTRA LOGIC IF NECESSARY\n                AS OBLIGOR_ENHANCEMENT_VALUE\n\n,SECURITIZATION_VALUE_CALC AS SV_CALC\n,SECURITIZATION_VALUE AS SV_AMT\n,OBLIGOR_ENHANCEMENT_VALUE_CALC AS OE_VALUE_CALC\n,OBLIGOR_ENHANCEMENT_VALUE AS OE_ASSET_AMT\n,SECURITIZATION_VALUE - OBLIGOR_ENHANCEMENT_VALUE AS OE_REDUCED_SV \n,SECURITIZATION_VALUE - RESIDUAL_VALUE AS RESIDUAL_VALUE_REDUCED_SV \n,SECURITIZATION_VALUE - OBLIGOR_ENHANCEMENT_VALUE - RESIDUAL_VALUE AS ADJUSTED_SV                                         \t\t\t\t\t\t\t    \n        \nFROM \n(   \n    --GATHER ELEMENTS AND START CALCULATIONS--\n    SELECT \n        ASSET_WT.CALC_DT\n        ,ASSET_WT.ASSET_ID\n        ,ASSET_WT.FLEETCO_ID\n        ,CASE \n            WHEN VEH_INELIG.ASSET_ID IS NOT NULL THEN 1\n            ELSE 0 \n        END AS INELIGIBLE_IND\n        \n        , CASE \t\n            WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 1      \n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') > ASSET_WT.CALC_DT::DATE\n                AND ( NULLIF(ASSET_WT.PAYMENT_DT,'1900-01-01') <= ASSET_WT.CALC_DT::DATE OR NULLIF(ASSET_WT.INCEPTION_DT,'1900-01-01') <= ASSET_WT.CALC_DT::DATE)\n                \n            THEN 1 \n\n            WHEN COALESCE(ASSET_WT.SOLD_DT,'2099-12-31') <= ASSET_WT.CALC_DT                                                                 \n            AND \n                (\n                    COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT,0) <> 0 \n                    OR\n                    COALESCE(TRAC_AR.RECV_BALANCE_AMT,0) <> 0 \n                    OR \n                    (COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) = 0 AND ASSET_WT.ASSET_JSON:LL_ID_A::STRING = ASSET_WT.ASSET_JSON:LL_ID_L::STRING)                \n                )\n            THEN 1\n            ELSE 0 \n        END AS LL_ACTIVE_IND\n\n        ,ASSET_WT.LL_TYPE\n                \n\n        ,CASE                                                   \n                \n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE\n                AND ASSET_WT.LL_TYPE= 'CLOSED END'   \n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) = 0\n            THEN CAST('SOLD CLOSED + NO PROCEEDS' AS VARCHAR(50))    \n                                                                    \n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE                            \n                AND ASSET_WT.LL_TYPE= 'OPEN END'      \n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) = 0\n            THEN CAST('SOLD OPEN + NO PROCEEDS' AS VARCHAR(50))\n\n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE  \n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) <> 0\n            THEN CAST('ASSET SOLD' AS VARCHAR(50))\n\n            WHEN COALESCE(ASSET_WT.LL_NBV,0) > 0                   \n            THEN CAST('BOOK VALUE >0' AS VARCHAR(50))\n\n            WHEN COALESCE(ASSET_WT.LL_NBV,0) <= 0                   \n                AND COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0     \n                AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED,0) > 0 \n            THEN  CAST('FULLY DEPRECIATED'  AS VARCHAR(50))\n\n            WHEN COALESCE(ASSET_WT.LL_NBV,0) <= 0                   \n                AND COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0         \n                AND COALESCE(ASSET_WT.TERMINATION_DT,DATE'2099-12-31') <=  ASSET_WT.CALC_DT::DATE\n            THEN CAST('FULLY DEPRECIATED'  AS VARCHAR(50))\n\n            WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0           \n                THEN  CAST('CAP COST'   AS VARCHAR(50))\n\n            WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 'ACCT_CAP_COST_AMT'   -- 2024-03-12 added for in-process units where LEASE_LOAN values are null\n\n                ELSE  CAST('PURCHASE PRICE'  AS VARCHAR(50))\n        END AS ASSET_VALUE_SOURCE\n\n        , COALESCE(CASE                                                                 \n\n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE              \n                AND ASSET_WT.LL_TYPE= 'CLOSED END'\n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) = 0\n            THEN LEAST(ASSET_WT.LL_NBV,ASSET_WT.RESIDUAL_VALUE) \n            \n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE \n                AND ASSET_WT.LL_TYPE= 'OPEN END'       \n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) = 0\n            THEN ASSET_WT.LL_NBV \n            \n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE   \n                AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS,0) <> 0\n            THEN 0 \n            \n            WHEN COALESCE(ASSET_WT.LL_NBV,0) > 0                    \n            THEN COALESCE(ASSET_WT.LL_NBV,0)                      \n            \n            WHEN COALESCE(ASSET_WT.LL_NBV,0) <= 0                  \n                AND COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0     \n                AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED,0) > 0 \n            THEN COALESCE(ASSET_WT.LL_NBV,0)\n\n            WHEN COALESCE(ASSET_WT.LL_NBV,0) <= 0                   \n                AND COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0         \n                AND COALESCE(ASSET_WT.TERMINATION_DT,DATE'2099-12-31') <=  ASSET_WT.CALC_DT::DATE\n            THEN  COALESCE(ASSET_WT.LL_NBV,0)\n            \n            WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) > 0         \n            THEN COALESCE(ASSET_WT.LL_CAP_COST_AMT,0) + ({{ INCLUDE_UPFIT_COST }}* COALESCE(ASSET_WT.UPFIT_COST,0))\n            \n            WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN COALESCE(ASSET_WT.ASSET_JSON:ACCT_CAP_COST_AMT::NUMBER(18,2),ASSET_WT.PURCHASE_PRICE)   -- 2024-03-12 added for in-process units where LEASE_LOAN values are null                                                                                  ELSE COALESCE(ASSET_WT.ASSET_JSON:ACCT_CAP_COST_AMT::NUMBER(18,2),ASSET_WT.PURCHASE_PRICE)\n            ELSE COALESCE(ASSET_WT.ACCT_CAP_COST_AMT,ASSET_WT.PURCHASE_PRICE)\n                \n        END,0) AS ASSET_VALUE                                                 -- 2024-03-20 added coalesce for OEM purchases with null ACCT_CAP_COST\n                    \n        , COALESCE(CASE                                                     -- 2024-03-20 added coalesce for in-process units that have null RESIDUAL_VALUE\n            WHEN COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') <= ASSET_WT.CALC_DT::DATE\n                THEN 0 \n                \n            WHEN ASSET_WT.LL_TYPE= 'OPEN END'             \n                THEN 0 \n                \n                ELSE LEAST(ASSET_WT.LL_NBV,ASSET_WT.RESIDUAL_VALUE) \n            END,0) AS RESIDUAL_VALUE \n        , ASSET_WT.SOLD_DT\n        , ASSET_WT.SELLING_FEE\n        ,\n        CASE \n            WHEN ASSET_WT.LL_TYPE= 'OPEN END' \n                AND COALESCE(ASSET_WT.SOLD_DT,DATE'2099-12-31') > ASSET_WT.CALC_DT::DATE\n                AND {{ INCLUDE_SELLING_FEE }} = 1\n            THEN COALESCE(ASSET_WT.SELLING_FEE,0) \n            ELSE 0 \n            END AS INCLUDED_SELLING_FEE\n        \n        ,'OPEN PRINCIPAL RENT' AS RECV_VALUE_CALC\n        ,COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT,0) AS PRINCIPAL_RENT_RECV_VALUE\n        ,COALESCE(NULL,0) AS ASSUMED_PRINCIPAL_RENT_RECV_VALUE\n        ,COALESCE(TRAC_AR.RECV_BALANCE_AMT,0) AS TRAC_RECV_VALUE\n        ,COALESCE(NULL,0) AS ASSUMED_TRAC_RECV_VALUE\n        ,0 AS DEPOSIT_VALUE\n        ,'CALCULATED' AS RECORD_SOURCE\n        ,COALESCE(\n            NULLIF(ASSET_WT.ASSET_JSON:RECORD_SOURCE_L::STRING,'BULK')   || ' ON LEASE OR LOAN INPUT DATA' \n            ,NULLIF(ASSET_WT.ASSET_JSON:RECORD_SOURCE_A::STRING,'BULK') || ' ON ASSET INPUT DATA' \n            ,'CALCULATED' \n            ) AS RECORD_NOTE         \n        ,ASSET_WT.ASSET_JSON\n        ,ASSET_WT.RECV_JSON\n        ,IND.INDICATOR_JSON\n        ,VEH_INELIG.INELIGIBLE_JSON                                           \n            \n    FROM \n    CLIENT_STAGE_T.ASSET_WT \n\n    LEFT OUTER JOIN \n    CLIENT_STAGE_T.AGG_RECV_WT PRINCIPAL_AR \n    ON ASSET_WT.CALC_DT = PRINCIPAL_AR.CALC_DT \n    AND ASSET_WT.FLEETCO_ID = PRINCIPAL_AR.FLEETCO_ID \n    AND ASSET_WT.ASSET_ID = PRINCIPAL_AR.ASSET_ID \n    AND PRINCIPAL_AR.RECV_TYPE = 'PRINCIPAL_AR'\n\n    LEFT OUTER JOIN \n    CLIENT_STAGE_T.AGG_RECV_WT TRAC_AR \n    ON ASSET_WT.CALC_DT = TRAC_AR.CALC_DT \n    AND ASSET_WT.FLEETCO_ID = TRAC_AR.FLEETCO_ID \n    AND ASSET_WT.ASSET_ID = TRAC_AR.ASSET_ID \n    AND TRAC_AR.RECV_TYPE = 'TRAC_AR'\n\n    LEFT OUTER JOIN \n    FLL_STAGE_T.INELIGIBLE_FLATTENED VEH_INELIG\n    ON ASSET_WT.ASSET_ID = VEH_INELIG.ASSET_ID\n    AND ASSET_WT.CALC_DT = VEH_INELIG.CALC_DT    \n\n    LEFT OUTER JOIN\n    FLL_STAGE_T.INDICATOR_FLATTENED IND\n    ON IND.ASSET_ID = ASSET_WT.ASSET_ID\n    AND IND.CALC_DT = ASSET_WT.CALC_DT\n    \n    WHERE ASSET_WT.CALC_DT = '{{ V_CALC_DT }}' \n    AND ASSET_WT.FLEETCO_ID = {{ FLEETCO_ID }}\n\n) SUBQ\n                                                    \nLEFT OUTER JOIN\n(\n    SELECT OBLIGOR_ID, SUM(ENHANCEMENT_AMT) AS AGG_CE\n    FROM\n    FLL_CORE_T.OBLIGOR_ENHANCEMENT \n    WHERE CALC_DT = '{{ V_CALC_DT }}'\n    GROUP BY OBLIGOR_ID\n) CE\nON CE.OBLIGOR_ID = SUBQ.ASSET_JSON:OBLIGOR_ID::STRING)"",
+  ""target_table"": ""CLIENT_STAGE_T.CE_SV_LEDGER_MT_TEST""
+}",2025-06-17 11:45:33.619,MICHAEL.TRIPP@HRSFT.COM
+TEST,PYTHON_CONFIG_TEST_AGG_RECV_WT,INSERT_DELETE,FLEETCO_ID,1,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38,0)"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""VARCHAR(16777216)"",
+      ""ordinal_position"": 1,
+      ""source"": ""RT.AR_TYPE"",
+      ""target"": ""AR_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 1,
+      ""source"": ""SUM(R.PRINCIPAL_BALANCE_AMT)"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SUM(R.PRINCIPAL_BALANCE_AMT)""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""group_by"": ""ALL;"",
+  ""joins"": [
+    {
+      ""alias"": ""R"",
+      ""on"": ""A.CALC_DT = R.CALC_DT\n    AND A.UNIT_ID = R.ASSET_NUMBER"",
+      ""table"": ""CLIENT_STAGE_T.GCE_RECEIVABLE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""RT"",
+      ""on"": ""RT.AR_TYPE IN ('PRINCIPAL_AR', 'TRAC_AR')                \n    AND R.RECV_TYPE = RT.RECV_TYPE              \n    AND COALESCE(R.RECV_SUB_TYPE,'') = COALESCE(RT.RECV_SUB_TYPE,'') \n    AND A.CALC_DT BETWEEN RT.START_DT AND RT.END_DT"",
+      ""table"": ""CONFIG_ALL.RECV_TYPE"",
+      ""type"": ""INNER""
+    }
+  ],
+  ""load_filter"": ""A.CALC_DT = '2025-06-01'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.ASSET_WT"",
+  ""target_table"": ""AGG_RECV_WT""
+}",2025-06-17 15:52:03.277,MICHAEL.TRIPP@HRSFT.COM
+AGG_RECV_WT,GCE_RECV_TO_AGG_RECV_WT,INSERT_DELETE,FLEETCO_ID,3,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""A.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(38, 0)"",
+      ""ordinal_position"": 2,
+      ""source"": ""A.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 3,
+      ""source"": ""A.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""STRING"",
+      ""ordinal_position"": 4,
+      ""source"": ""RT.AR_TYPE"",
+      ""target"": ""RECV_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": null
+    },
+    {
+      ""data_type"": ""NUMBER(18, 2)"",
+      ""ordinal_position"": 5,
+      ""source"": ""R.PRINCIPAL_BALANCE_AMT"",
+      ""target"": ""RECV_BALANCE_AMT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""SUM(R.PRINCIPAL_BALANCE_AMT)""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""group_by"": ""ALL"",
+  ""joins"": [
+    {
+      ""alias"": ""R"",
+      ""on"": ""A.CALC_DT = R.CALC_DT AND A.UNIT_ID = R.ASSET_NUMBER"",
+      ""table"": ""CLIENT_STAGE_T.GCE_RECEIVABLE"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""RT"",
+      ""on"": ""RT.AR_TYPE IN ('{{ AR_TYPE_1 }}', '{{ AR_TYPE_2 }}') AND R.RECV_TYPE = RT.RECV_TYPE AND COALESCE(R.RECV_SUB_TYPE,'') = COALESCE(RT.RECV_SUB_TYPE,'') AND A.CALC_DT BETWEEN RT.START_DT AND RT.END_DT"",
+      ""table"": ""CONFIG_ALL.RECV_TYPE"",
+      ""type"": ""INNER""
+    },
+    {
+      ""alias"": ""RD"",
+      ""on"": ""A.CALC_DT = RD.CALC_DT AND A.FLEETCO_ID = RD.FLEETCO_ID AND COALESCE(R.DAY_COUNT_PAST_DUE, 0) >= RD.VALUE:\""DAYS_MIN_RANGE\""::INT AND COALESCE(R.DAY_COUNT_PAST_DUE, 0) <= RD.VALUE:\""DAYS_MAX_RANGE\""::INT AND RD.VARIABLE_NAME = 'RECV_DAYS_PAST_DUE' AND RD.VALUE:\""RECV_DAYS_TYPE\""::STRING = '{{ RECV_DAYS_TYPE }}' AND RD.FLEETCO_ID = {{ FLEETCO_ID }}"",
+      ""table"": ""(SELECT * FROM CORE_A.FLEETCO_GROUP_OUTPUTS IGO,\nLATERAL FLATTEN(input => PARSE_JSON(IGO.VARIABLE_JSON_VALUE)) f)"",
+      ""type"": ""LEFT""
+    }
+  ],
+  ""load_filter"": ""A.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""A"",
+  ""source_table"": ""CLIENT_STAGE_T.ASSET_WT"",
+  ""target_table"": ""CLIENT_STAGE_T.AGG_RECV_WT_V2""
+}",2025-06-18 13:35:54.672,MICHAEL.TRIPP@HRSFT.COM
+TEST,PYTHON_CONFIG_TEST_CE_SV_LEDGER2,INSERT_DELETE,FLEETCO_ID,1,,"{
+  ""columns"": [
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 1,
+      ""source"": ""ASSET_WT.CALC_DT"",
+      ""target"": ""CALC_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.CALC_DT""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 2,
+      ""source"": ""ASSET_WT.ASSET_ID"",
+      ""target"": ""ASSET_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.ASSET_ID""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 3,
+      ""source"": ""ASSET_WT.FLEETCO_ID"",
+      ""target"": ""FLEETCO_ID"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.FLEETCO_ID""
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 4,
+      ""source"": ""CASE WHEN NOT VEH_INELIG.ASSET_ID IS NULL THEN 1 ELSE 0 END"",
+      ""target"": ""INELIGIBLE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN NOT VEH_INELIG.ASSET_ID IS NULL THEN 1 ELSE 0 END""
+    },
+    {
+      ""data_type"": ""NUMBER(1,0)"",
+      ""ordinal_position"": 5,
+      ""source"": ""CASE WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 1 WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) > CAST(ASSET_WT.CALC_DT AS DATE) AND (NULLIF(ASSET_WT.PAYMENT_DT, '1900-01-01') <= CAST(ASSET_WT.CALC_DT AS DATE) OR NULLIF(ASSET_WT.INCEPTION_DT, '1900-01-01') <= CAST(ASSET_WT.CALC_DT AS DATE)) THEN 1 WHEN COALESCE(ASSET_WT.SOLD_DT, '2099-12-31') <= CAST(ASSET_WT.CALC_DT AS DATE) AND (COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT, 0) <> 0 OR COALESCE(TRAC_AR.RECV_BALANCE_AMT, 0) <> 0 OR (COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 AND CAST(ASSET_WT.ASSET_JSON:\""LL_ID_A\"" AS TEXT) = CAST(ASSET_WT.ASSET_JSON:\""LL_ID_L\"" AS TEXT))) THEN 1 ELSE 0 END"",
+      ""target"": ""LL_ACTIVE_IND"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 1 WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) > CAST(ASSET_WT.CALC_DT AS DATE) AND (NULLIF(ASSET_WT.PAYMENT_DT, '1900-01-01') <= CAST(ASSET_WT.CALC_DT AS DATE) OR NULLIF(ASSET_WT.INCEPTION_DT, '1900-01-01') <= CAST(ASSET_WT.CALC_DT AS DATE)) THEN 1 WHEN COALESCE(ASSET_WT.SOLD_DT, '2099-12-31') <= CAST(ASSET_WT.CALC_DT AS DATE) AND (COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT, 0) <> 0 OR COALESCE(TRAC_AR.RECV_BALANCE_AMT, 0) <> 0 OR (COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 AND CAST(ASSET_WT.ASSET_JSON:\""LL_ID_A\"" AS TEXT) = CAST(ASSET_WT.ASSET_JSON:\""LL_ID_L\"" AS TEXT))) THEN 1 ELSE 0 END""
+    },
+    {
+      ""data_type"": ""VARCHAR(20)"",
+      ""ordinal_position"": 6,
+      ""source"": ""ASSET_WT.LL_TYPE"",
+      ""target"": ""LL_TYPE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.LL_TYPE""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 7,
+      ""source"": ""CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'CLOSED END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN CAST('SOLD CLOSED + NO PROCEEDS' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN CAST('SOLD OPEN + NO PROCEEDS' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) <> 0 THEN CAST('ASSET SOLD' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_NBV, 0) > 0 THEN CAST('BOOK VALUE >0' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_NBV, 0) <= 0 AND COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED, 0) > 0 THEN CAST('FULLY DEPRECIATED' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 THEN CAST('CAP COST' AS VARCHAR(50)) WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 'ACCT_CAP_COST_AMT' /* 2024-03-12 added for in-process units where LEASE_LOAN values are null */ ELSE CAST('PURCHASE PRICE' AS VARCHAR(50)) END"",
+      ""target"": ""ASSET_VALUE_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'CLOSED END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN CAST('SOLD CLOSED + NO PROCEEDS' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN CAST('SOLD OPEN + NO PROCEEDS' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) <> 0 THEN CAST('ASSET SOLD' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_NBV, 0) > 0 THEN CAST('BOOK VALUE >0' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_NBV, 0) <= 0 AND COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED, 0) > 0 THEN CAST('FULLY DEPRECIATED' AS VARCHAR(50)) WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 THEN CAST('CAP COST' AS VARCHAR(50)) WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN 'ACCT_CAP_COST_AMT' /* 2024-03-12 added for in-process units where LEASE_LOAN values are null */ ELSE CAST('PURCHASE PRICE' AS VARCHAR(50)) END""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 8,
+      ""source"": ""COALESCE(CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'CLOSED END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN LEAST(ASSET_WT.LL_NBV, ASSET_WT.RESIDUAL_VALUE) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN ASSET_WT.LL_NBV WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) <> 0 THEN 0 WHEN COALESCE(ASSET_WT.LL_NBV, 0) > 0 THEN COALESCE(ASSET_WT.LL_NBV, 0) WHEN COALESCE(ASSET_WT.LL_NBV, 0) <= 0 AND COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED, 0) > 0 THEN COALESCE(ASSET_WT.LL_NBV, 0) WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 THEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) + ({{ INCLUDE_UPFIT_COST }} * COALESCE(ASSET_WT.UPFIT_COST, 0)) WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN COALESCE(CAST(ASSET_WT.ASSET_JSON:\""ACCT_CAP_COST_AMT\"" AS DECIMAL(18, 2)), ASSET_WT.PURCHASE_PRICE) /* 2024-03-12 added for in-process units where LEASE_LOAN values are null ELSE COALESCE(ASSET_WT.ASSET_JSON:\""ACCT_CAP_COST_AMT\""::NUMBER(18,2),ASSET_WT.PURCHASE_PRICE) */ ELSE COALESCE(ASSET_WT.ACCT_CAP_COST_AMT, ASSET_WT.PURCHASE_PRICE) END, 0)"",
+      ""target"": ""ASSET_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'CLOSED END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN LEAST(ASSET_WT.LL_NBV, ASSET_WT.RESIDUAL_VALUE) WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) = 0 THEN ASSET_WT.LL_NBV WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) AND COALESCE(ASSET_WT.DISPOSITION_PROCEEDS, 0) <> 0 THEN 0 WHEN COALESCE(ASSET_WT.LL_NBV, 0) > 0 THEN COALESCE(ASSET_WT.LL_NBV, 0) WHEN COALESCE(ASSET_WT.LL_NBV, 0) <= 0 AND COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 AND COALESCE(ASSET_WT.CURRENT_TERM_MONTHS_BILLED, 0) > 0 THEN COALESCE(ASSET_WT.LL_NBV, 0) WHEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) > 0 THEN COALESCE(ASSET_WT.LL_CAP_COST_AMT, 0) + ({{ INCLUDE_UPFIT_COST }} * COALESCE(ASSET_WT.UPFIT_COST, 0)) WHEN ASSET_WT.IN_PROCESS_IND = 'YES' THEN COALESCE(CAST(ASSET_WT.ASSET_JSON:\""ACCT_CAP_COST_AMT\"" AS DECIMAL(18, 2)), ASSET_WT.PURCHASE_PRICE) /* 2024-03-12 added for in-process units where LEASE_LOAN values are null ELSE COALESCE(ASSET_WT.ASSET_JSON:\""ACCT_CAP_COST_AMT\""::NUMBER(18,2),ASSET_WT.PURCHASE_PRICE) */ ELSE COALESCE(ASSET_WT.ACCT_CAP_COST_AMT, ASSET_WT.PURCHASE_PRICE) END, 0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 9,
+      ""source"": ""COALESCE(CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) THEN 0 WHEN ASSET_WT.LL_TYPE = 'OPEN END' THEN 0 ELSE LEAST(ASSET_WT.LL_NBV, ASSET_WT.RESIDUAL_VALUE) END /* 2024-03-20 added coalesce for in-process units that have null RESIDUAL_VALUE */, 0)"",
+      ""target"": ""RESIDUAL_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(CASE WHEN COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) <= CAST(ASSET_WT.CALC_DT AS DATE) THEN 0 WHEN ASSET_WT.LL_TYPE = 'OPEN END' THEN 0 ELSE LEAST(ASSET_WT.LL_NBV, ASSET_WT.RESIDUAL_VALUE) END /* 2024-03-20 added coalesce for in-process units that have null RESIDUAL_VALUE */, 0)""
+    },
+    {
+      ""data_type"": ""DATE"",
+      ""ordinal_position"": 10,
+      ""source"": ""ASSET_WT.SOLD_DT"",
+      ""target"": ""SOLD_DT"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.SOLD_DT""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 11,
+      ""source"": ""ASSET_WT.SELLING_FEE"",
+      ""target"": ""SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.SELLING_FEE""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 12,
+      ""source"": ""CASE WHEN ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) > CAST(ASSET_WT.CALC_DT AS DATE) AND {{ INCLUDE_SELLING_FEE }} = 1 THEN COALESCE(ASSET_WT.SELLING_FEE, 0) ELSE 0 END"",
+      ""target"": ""INCLUDED_SELLING_FEE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""CASE WHEN ASSET_WT.LL_TYPE = 'OPEN END' AND COALESCE(ASSET_WT.SOLD_DT, CAST('2099-12-31' AS DATE)) > CAST(ASSET_WT.CALC_DT AS DATE) AND {{ INCLUDE_SELLING_FEE }} = 1 THEN COALESCE(ASSET_WT.SELLING_FEE, 0) ELSE 0 END""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 13,
+      ""source"": ""'OPEN PRINCIPAL RENT'"",
+      ""target"": ""RECV_VALUE_CALC"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'OPEN PRINCIPAL RENT'""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 14,
+      ""source"": ""COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT, 0)"",
+      ""target"": ""PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(PRINCIPAL_AR.RECV_BALANCE_AMT, 0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 15,
+      ""source"": ""COALESCE(NULL, 0)"",
+      ""target"": ""ASSUMED_PRINCIPAL_RENT_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(NULL, 0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 16,
+      ""source"": ""COALESCE(TRAC_AR.RECV_BALANCE_AMT, 0)"",
+      ""target"": ""TRAC_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(TRAC_AR.RECV_BALANCE_AMT, 0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 17,
+      ""source"": ""COALESCE(NULL, 0)"",
+      ""target"": ""ASSUMED_TRAC_RECV_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(NULL, 0)""
+    },
+    {
+      ""data_type"": ""NUMBER(18,2)"",
+      ""ordinal_position"": 18,
+      ""source"": ""0"",
+      ""target"": ""DEPOSIT_VALUE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""0""
+    },
+    {
+      ""data_type"": ""VARCHAR(50)"",
+      ""ordinal_position"": 19,
+      ""source"": ""'CALCULATED'"",
+      ""target"": ""RECORD_SOURCE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""'CALCULATED'""
+    },
+    {
+      ""data_type"": ""VARCHAR(500)"",
+      ""ordinal_position"": 20,
+      ""source"": ""COALESCE(NULLIF(CAST(ASSET_WT.ASSET_JSON:\""RECORD_SOURCE_L\"" AS TEXT), 'BULK') || ' ON LEASE OR LOAN INPUT DATA', NULLIF(CAST(ASSET_WT.ASSET_JSON:\""RECORD_SOURCE_A\"" AS TEXT), 'BULK') || ' ON ASSET INPUT DATA', 'CALCULATED')"",
+      ""target"": ""RECORD_NOTE"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""COALESCE(NULLIF(CAST(ASSET_WT.ASSET_JSON:\""RECORD_SOURCE_L\"" AS TEXT), 'BULK') || ' ON LEASE OR LOAN INPUT DATA', NULLIF(CAST(ASSET_WT.ASSET_JSON:\""RECORD_SOURCE_A\"" AS TEXT), 'BULK') || ' ON ASSET INPUT DATA', 'CALCULATED')""
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 21,
+      ""source"": ""ASSET_WT.ASSET_JSON"",
+      ""target"": ""ASSET_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.ASSET_JSON""
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 22,
+      ""source"": ""ASSET_WT.RECV_JSON"",
+      ""target"": ""RECV_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""ASSET_WT.RECV_JSON""
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 23,
+      ""source"": ""IND.INDICATOR_JSON"",
+      ""target"": ""INDICATOR_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""IND.INDICATOR_JSON""
+    },
+    {
+      ""data_type"": ""VARIANT"",
+      ""ordinal_position"": 24,
+      ""source"": ""VEH_INELIG.INELIGIBLE_JSON"",
+      ""target"": ""INELIGIBLE_JSON"",
+      ""target_type"": ""EXPOSED"",
+      ""transformation"": ""VEH_INELIG.INELIGIBLE_JSON""
+    }
+  ],
+  ""delete_filter"": ""CALC_DT = '{{ V_CALC_DT }}'"",
+  ""joins"": [
+    {
+      ""alias"": ""PRINCIPAL_AR"",
+      ""on"": ""ASSET_WT.CALC_DT = PRINCIPAL_AR.CALC_DT AND ASSET_WT.FLEETCO_ID = PRINCIPAL_AR.FLEETCO_ID AND ASSET_WT.ASSET_ID = PRINCIPAL_AR.ASSET_ID AND PRINCIPAL_AR.RECV_TYPE = 'PRINCIPAL_AR'"",
+      ""table"": ""CLIENT_STAGE_T.AGG_RECV_WT"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""TRAC_AR"",
+      ""on"": ""ASSET_WT.CALC_DT = TRAC_AR.CALC_DT AND ASSET_WT.FLEETCO_ID = TRAC_AR.FLEETCO_ID AND ASSET_WT.ASSET_ID = TRAC_AR.ASSET_ID AND TRAC_AR.RECV_TYPE = 'TRAC_AR'"",
+      ""table"": ""CLIENT_STAGE_T.AGG_RECV_WT"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""VEH_INELIG"",
+      ""on"": ""ASSET_WT.ASSET_ID = VEH_INELIG.ASSET_ID AND ASSET_WT.CALC_DT = VEH_INELIG.CALC_DT"",
+      ""table"": ""FLL_STAGE_T.INELIGIBLE_FLATTENED"",
+      ""type"": ""LEFT""
+    },
+    {
+      ""alias"": ""IND"",
+      ""on"": ""IND.ASSET_ID = ASSET_WT.ASSET_ID AND IND.CALC_DT = ASSET_WT.CALC_DT"",
+      ""table"": ""FLL_STAGE_T.INDICATOR_FLATTENED"",
+      ""type"": ""LEFT""
+    }
+  ],
+  ""load_filter"": ""ASSET_WT.CALC_DT = '{{ V_CALC_DT }}'"",
+  ""source_alias"": ""ASSET_WT"",
+  ""source_table"": ""CLIENT_STAGE_T.ASSET_WT"",
+  ""target_table"": ""CLIENT_STAGE_T.CE_SV_LEDGER_MT_TEST""
+}",2025-06-18 17:02:51.810,MICHAEL.TRIPP@HRSFT.COM
