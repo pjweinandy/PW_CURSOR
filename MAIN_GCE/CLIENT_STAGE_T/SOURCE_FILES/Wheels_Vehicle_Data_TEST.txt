@@ -1,0 +1,101 @@
+﻿ASSET_ID|VEHICLE_TYPE_DESCRIPTION|MAKE|MODEL|INTEREST_RATE|RESERVE_RATE|FIXED_FLOAT|BASE_INDEX|FUNDING_DESCRIPTION|IN_SERVICE_DATE|MANAGEMENT_FEE_RATE_PCT|MANAGEMENT_FEE_AMT|TERM_DT|SOLD_DT|ORIGINAL_TERM_NUM|MONTHS_IN_SERVICE_NUM|DISPOSAL_INVOICE_DATE|GVWR|TITLE_RECV_DT|OwnerCode|LeaseType|AcquisitionType|EngineFuelType|GarageState|VIN|ModelYear|DelDate
+5052304|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|2|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8670||LT|Open|Factory|Gasoline|California|1FTYE1Y88PKB94764|2023|2025-04-28 00:00:00
+5058951|Medium Duty Trucks|Ford|F-550 Chassis 4x4 SD Super Cab|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||19500||LT|Open|Factory|Diesel|Colorado|1FD0X5HT7REE86566|2024|2025-04-25 00:00:00
+5093616|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|1.19|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5600||LT|Open|Mfg Direct|Gasoline|New York|3TYJDAHN0RT002165|2024|2025-04-23 00:00:00
+5112244|Light Duty Trucks|Chevrolet|Silverado EV All-Wheel Drive C|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||9990||LT|Open|Factory|Electric|Alaska|1GC10UED1RU204500|2024|2025-04-22 00:00:00
+5115615|Light Duty Trucks|Ford|Transit-350 Cargo All-Wheel Dr|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||9500||LT|Open|Factory|Gasoline|Texas|1FTBW2C89RKA66374|2024|2025-04-24 00:00:00
+5132083|Light Duty Trucks|Volvo|EX40 4dr All-Wheel Drive Sport|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||0||LT|Open|Mfg Direct|Electric|Illinois|YV4ER3HJ7S2506696|2025|2025-04-29 00:00:00
+5132087|Light Duty Trucks|Volkswagen|ID.4 4dr 4x2 Pro S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||0||LT|Open|Mfg Direct|Electric|South Carolina|1V2VRPE84RC017784|2024|2025-04-29 00:00:00
+5148943|Light Duty Trucks|Nissan|Rogue 4dr All-Wheel Drive SL|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4773||LT|Open|Mfg Direct|Gasoline|Pennsylvania|JN8BT3CB0SW419128|2025|2025-04-21 00:00:00
+5159645|Light Duty Trucks|Buick|Envista 4dr Front-Wheel Drive|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4255||LT|Open|Factory|Gasoline|Texas|KL47LCEP5SB124912|2025|2025-04-29 00:00:00
+5162366|Light Duty Trucks|Cadillac|XT5 4dr Front-Wheel Drive Prem|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6001||DW|Open|Factory|Gasoline|Florida|1GYKNCR41SZ116561|2025|2025-04-17 00:00:00
+5165262|Light Duty Trucks|Volvo|EX40 4dr All-Wheel Drive Sport|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||0||LT|Open|Mfg Direct|Electric|Washington|YV4ER3HJ9S2536475|2025|2025-04-29 00:00:00
+5172279|Light Duty Trucks|Ford|Explorer 4dr 4x4 Active|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5940||LT|Open|Factory|Gasoline|Minnesota|1FMUK8DH9SGB34571|2025|2025-04-17 00:00:00
+5175642|Light Duty Trucks|GMC|Sierra 2500HD 4x4 Crew Cab 6.7|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||10000||LT|Open|Factory|Diesel|Nebraska|1GT1UMEY3SF265333|2025|2025-04-23 00:00:00
+5179060|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Ohio|KL77LHEP3SC195813|2025|2025-04-29 00:00:00
+5179273|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Wisconsin|KL77LHEP0SC220795|2025|2025-04-21 00:00:00
+5179322|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Texas|KL77LHEP0SC181156|2025|2025-04-18 00:00:00
+5179642|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Florida|KL77LHEP0SC169685|2025|2025-04-25 00:00:00
+5180087|Light Duty Trucks|Chevrolet|Equinox 4dr All-Wheel Drive LT|0|0|Fixed|||2025-01-01 00:00:00|0|0.00|||0|0||4850||DW|Open|Factory|Gasoline|Nevada|3GNAXPEG2SL189066|2025|2024-12-11 00:00:00
+5181099|Light Duty Trucks|Volvo|XC60 4dr All-Wheel Drive Sport|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||0||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|New Jersey|YV4M12RC6S1123061|2025|2025-04-22 00:00:00
+5183264|Light Duty Trucks|Chevrolet|Silverado 3500HD Chassis 4x2 R|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||14000||LT|Open|Factory|Diesel|South Carolina|1GB3AREYXSF203639|2025|2025-04-21 00:00:00
+5185305|Light Duty Trucks|Chevrolet|Equinox EV 4dr LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6060||LT|Open|Factory|Electric|North Carolina|3GN7DLRP0SS152920|2025|2025-04-21 00:00:00
+5185337|Light Duty Trucks|Chevrolet|Equinox EV 4dr LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6060||LT|Open|Factory|Electric|Florida|3GN7DLRP1SS152957|2025|2025-04-18 00:00:00
+5189666|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LS|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Illinois|KL77LFEP2SC206921|2025|2025-04-21 00:00:00
+5189704|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LS|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Oregon|KL77LFEP8SC206566|2025|2025-04-10 00:00:00
+5189708|Light Duty Trucks|Chevrolet|Trax 4dr Front-Wheel Drive LS|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4145||DW|Open|Factory|Gasoline|Texas|KL77LFEP4SC206662|2025|2025-04-22 00:00:00
+5190696|Light Duty Trucks|Chevrolet|Equinox 4dr All-Wheel Drive LT|0|0|TBD||||0|0.00|||0|0||4850||LT|Open|Factory|Gasoline|Florida|3GNAXPEG4SL252118|2025|
+5192358|Cars|Toyota|Camry 4dr All-Wheel Drive Seda|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4740||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Georgia|4T1DBADK5SU022788|2025|2025-04-25 00:00:00
+5193636|Light Duty Trucks|Toyota|Highlander 4dr All-Wheel Drive|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5970||LT|Open|Mfg Direct|Gasoline|Michigan|5TDKDRBH2SS580727|2025|2025-04-18 00:00:00
+5195982|Light Duty Trucks|Chevrolet|Silverado 2500HD 4x4 Crew Cab|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||10000||LT|Open|Out of Stock Client|Gasoline|Texas|2GC1KNE76S1118126|2025|2025-04-10 00:00:00
+5196006|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|Indiana|1FTYE1Y82RKB82533|2024|2025-04-29 00:00:00
+5196093|Light Duty Trucks|GMC|Sierra 2500HD 4x4 Crew Cab 6.7|0|0|TBD||||0|0.00|||0|0||10000||LT|Open|Factory|Gasoline|Louisiana|1GT1UME72SF290053|2025|
+5196414|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|Texas|1FTYE1Y83RKB82749|2024|2025-04-11 00:00:00
+5197086|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|2.25|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|California|JTMEB3FV6SD247801|2025|2025-04-28 00:00:00
+5197211|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Tennessee|JTMEB3FV3SD247755|2025|2025-04-21 00:00:00
+5197613|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|1.85|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|California|1FTYE1Y86RKB82678|2024|2025-04-16 00:00:00
+5197667|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|Texas|1FTYE1Y82RKB82788|2024|2025-04-25 00:00:00
+5198281|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Florida|JTMEB3FV9SD250515|2025|2025-04-18 00:00:00
+5198333|Cars|Toyota|Corolla Hybrid 4dr All-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Nebraska|JTDBDMHE2S3018991|2025|2025-04-22 00:00:00
+5198687|Light Duty Trucks|Chevrolet|Traverse 4dr All-Wheel Drive L|0|0|TBD||||0|0.00|||0|0||6394||LT|Open|Factory|Gasoline|Minnesota|1GNEVGRS3SJ252155|2025|
+5198880|Light Duty Trucks|Chevrolet|Traverse 4dr All-Wheel Drive L|0|0|TBD||||0|0.00|||0|0||6394||LT|Open|Factory|Gasoline|Minnesota|1GNEVGRS0SJ252145|2025|
+5199166|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Florida|JTMEB3FV6SD251010|2025|2025-04-22 00:00:00
+5199324|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|California|1FTYE1Y81RKB82183|2024|2025-04-29 00:00:00
+5199542|Cars|Toyota|Corolla Hybrid 4dr Front-Wheel|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4065||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Mississippi|JTDBCMFE3S3083290|2025|2025-04-23 00:00:00
+5200955|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||DW|Open|Mfg Direct|Gasoline/Electric Hybrid|New Jersey|4T3LWRFV7SU180806|2025|2025-04-25 00:00:00
+5201034|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Tennessee|4T3B6RFV2SU181941|2025|2025-04-22 00:00:00
+5201251|Light Duty Trucks|Toyota|Crown Signia 4dr All-Wheel Dri|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|New York|JTDACAAJ1S3021241|2025|2025-04-25 00:00:00
+5201258|Light Duty Trucks|Toyota|Crown Signia 4dr All-Wheel Dri|0|0|TBD||||0|0.00|||0|0||5180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Georgia|JTDACAAJ6S3021123|2025|
+5201270|Light Duty Trucks|Chevrolet|Equinox 4dr Front-Wheel Drive|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4629||DW|Open|Factory|Gasoline|Florida|3GNAXHEGXSL239038|2025|2025-04-04 00:00:00
+5201427|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Pennsylvania|4T3B6RFV1SU181865|2025|2025-04-29 00:00:00
+5201909|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Utah|4T3RWRFV6SU181911|2025|2025-04-21 00:00:00
+5201992|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Massachusetts|4T3B6RFV9SU181970|2025|2025-04-21 00:00:00
+5202021|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD||||0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Louisiana|4T3B6RFV2SU182359|2025|
+5202090|Light Duty Trucks|Ford|Transit-150 Cargo Rear-Wheel D|0|1.85|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||8800||LT|Open|Factory|Gasoline|Texas|1FTYE1Y84RKB86843|2024|2025-04-24 00:00:00
+5202161|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|New York|4T3B6RFV2SU182023|2025|2025-04-21 00:00:00
+5202391|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|New York|3TYJDAHN2ST019734|2025|2025-04-22 00:00:00
+5202396|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|New York|3TYJDAHN5ST019842|2025|2025-04-22 00:00:00
+5202626|Cars|Toyota|Corolla Hybrid 4dr All-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Nebraska|JTDBDMHE7S3019487|2025|2025-04-19 00:00:00
+5202640|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHN3ST023274|2025|2025-04-29 00:00:00
+5202651|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHN1ST023225|2025|2025-04-29 00:00:00
+5202678|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Pennsylvania|3TYJDAHNXST022882|2025|2025-04-29 00:00:00
+5202679|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Pennsylvania|3TYJDAHNXST022820|2025|2025-04-29 00:00:00
+5202690|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHN2ST023282|2025|2025-04-29 00:00:00
+5202692|Cars|Toyota|Camry 4dr Front-Wheel Drive Se|0|0|TBD||||0|0.00|||0|0||4625||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Pennsylvania|4T1DAACK7SU144315|2025|
+5202712|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHN8ST023349|2025|2025-04-29 00:00:00
+5202725|Light Duty Trucks|Audi|Q5 e 4dr All-Wheel Drive quatt|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||0||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Georgia|WA1G2BFY8S2060501|2025|2025-04-15 00:00:00
+5202734|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHNXST023403|2025|2025-04-29 00:00:00
+5202766|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Pennsylvania|3TYJDAHN2ST022956|2025|2025-04-29 00:00:00
+5202787|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Pennsylvania|3TYJDAHN7ST022953|2025|2025-04-29 00:00:00
+5202799|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Pennsylvania|3TYJDAHN5ST023034|2025|2025-04-29 00:00:00
+5202905|Light Duty Trucks|Hyundai|Tucson Hybrid 4dr All-Wheel Dr|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5004||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|South Carolina|KM8JBDD12SU309405|2025|2025-04-17 00:00:00
+5202914|Light Duty Trucks|Toyota|Crown Signia 4dr All-Wheel Dri|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Minnesota|JTDACAAJ2S3021300|2025|2025-04-22 00:00:00
+5203034|Cars|Toyota|Corolla Hybrid 4dr Front-Wheel|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4065||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|North Carolina|JTDBCMFE6S3087799|2025|2025-04-18 00:00:00
+5203055|Light Duty Trucks|Subaru|Forester 4dr All-Wheel Drive L|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4901||LT|Open|Mfg Direct|Gasoline|South Dakota|JF2SLDRCXSH498329|2025|2025-04-26 00:00:00
+5203612|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Wisconsin|4T3B6RFV3SU182161|2025|2025-04-25 00:00:00
+5203630|Light Duty Trucks|Toyota|Highlander Hybrid 4dr All-Whee|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6000||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Texas|5TDKBRCH9SS661261|2025|2025-04-07 00:00:00
+5204207|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|2|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Arizona|4T3D6RFV4SU181934|2025|2025-04-25 00:00:00
+5204357|Cars|Toyota|Corolla Hybrid 4dr All-Wheel D|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Washington|JTDBDMHE4S3019494|2025|2025-04-18 00:00:00
+5204455|Cars|Toyota|Corolla Hybrid 4dr Front-Wheel|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4065||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Kentucky|JTDBCMFE1S3086852|2025|2025-04-25 00:00:00
+5204932|Light Duty Trucks|Chevrolet|Trailblazer 4dr Front-Wheel Dr|0|0|TBD||||0|0.00|||0|0||4255||DW|Open|Factory|Gasoline|Indiana|KL79MPSL4SB211329|2025|
+5205152|Light Duty Trucks|Subaru|Outback 4dr All-Wheel Drive Pr|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4850||LT|Open|Mfg Direct|Gasoline|North Carolina|4S4BTADCXS3194723|2025|2025-04-22 00:00:00
+5205211|Light Duty Trucks|Toyota|Sienna 4dr All-Wheel Drive Pas|0|0|TBD||||0|0.00|||0|0||6170||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Nebraska|5TDYSKFC1SS188392|2025|
+5205222|Light Duty Trucks|Toyota|Crown Signia 4dr All-Wheel Dri|0|0|TBD||||0|0.00|||0|0||5180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Texas|JTDACAAJXS3022131|2025|
+5205242|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD||||0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Nevada|4T3B6RFVXSU183064|2025|
+5205252|Cars|Toyota|Corolla Hybrid 4dr Front-Wheel|0|0|TBD||||0|0.00|||0|0||4065||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Texas|JTDBCMFE6S3087091|2025|
+5205446|Light Duty Trucks|Toyota|RAV4 Hybrid 4dr All-Wheel Driv|0|0|TBD||||0|0.00|||0|0||4920||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Kentucky|4T3B6RFV7SU183670|2025|
+5205479|Cars|Toyota|Camry 4dr Front-Wheel Drive Se|0|0|TBD||||0|0.00|||0|0||4625||DW|Open|Mfg Direct|Gasoline/Electric Hybrid|New Jersey|4T1DAACK8SU143898|2025|
+5205526|Light Duty Trucks|Toyota|Tacoma 4x2 XtraCab 6 ft. box S|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5605||LT|Open|Mfg Direct|Gasoline|Connecticut|3TYJDAHNXST022249|2025|2025-04-29 00:00:00
+5205534|Light Duty Trucks|Chevrolet|Equinox 4dr Front-Wheel Drive|0|0|Fixed|||2025-03-01 00:00:00|0|0.00|||0|0||4629||DW|Open|Factory|Gasoline|Alabama|3GNAXHEG1SL239686|2025|2025-02-03 00:00:00
+5205591|Light Duty Trucks|Chevrolet|Trailblazer 4dr All-Wheel Driv|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4409||DW|Open|Factory|Gasoline|Ohio|KL79MRSL9SB191526|2025|2025-04-17 00:00:00
+5206032|Light Duty Trucks|Toyota|Crown Signia 4dr All-Wheel Dri|0|0|TBD||||0|0.00|||0|0||5180||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Kansas|JTDACAAJ7S3022247|2025|
+5207226|Light Duty Trucks|Toyota|Sienna 4dr All-Wheel Drive Pas|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6170||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Massachusetts|5TDYSKFC7SS177798|2025|2025-04-23 00:00:00
+5207628|Light Duty Trucks|Hyundai|Tucson Hybrid 4dr All-Wheel Dr|0|2.083|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5004||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Michigan|KM8JBDD14SU313309|2025|2025-04-24 00:00:00
+5207648|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Michigan|JTMEB3FV0SD253237|2025|2025-04-21 00:00:00
+5207684|Light Duty Trucks|Chevrolet|Silverado 1500 4x2 Regular Cab|0|0|TBD||||0|0.00|||0|0||6800||LT|Open|Factory|Gasoline|California|3GCNAAEK6SG241899|2025|
+5207740|Light Duty Trucks|Chevrolet|Equinox 4dr All-Wheel Drive LT|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||4850||LT|Open|Factory|Gasoline|Massachusetts|3GNAXPEG5SL284821|2025|2025-04-29 00:00:00
+5207742|Cars|Toyota|Corolla Hybrid 4dr Front-Wheel|0|0|TBD||||0|0.00|||0|0||4065||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Texas|JTDBCMFE5S3089740|2025|
+5207804|Light Duty Trucks|Ford|Explorer 4dr 4x4 Active|0|2.5|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5940||LT|Open|Factory|Gasoline|South Dakota|1FMUK8DH7SGB36318|2025|2025-04-25 00:00:00
+5207811|Light Duty Trucks|Chevrolet|Traverse 4dr All-Wheel Drive L|0|0|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||6394||LT|Open|Factory|Gasoline|New Jersey|1GNEVGRS1SJ200474|2025|2025-04-18 00:00:00
+5207912|Light Duty Trucks|Toyota|RAV4 Plug-In Hybrid 4dr All-Wh|0|2.25|TBD|||2025-05-01 00:00:00|0|0.00|||0|0||5530||LT|Open|Mfg Direct|Gasoline/Plug-In Electric|Michigan|JTMEB3FV0SD254405|2025|2025-04-28 00:00:00
+5208052|Light Duty Trucks|Toyota|Highlander Hybrid 4dr All-Whee|0|0|TBD||||0|0.00|||0|0||6000||LT|Open|Mfg Direct|Gasoline/Electric Hybrid|Arizona|5TDKBRCH9SS669103|2025|
